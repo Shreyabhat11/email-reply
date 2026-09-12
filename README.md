@@ -1,254 +1,496 @@
 # AI Email Suggested-Response System
 
-Given an incoming support email, this system (1) retrieves similar past
-email/reply pairs, (2) asks an LLM to draft a suggested reply grounded in
-those examples, and (3) scores the suggested reply for quality with an
-explainable, multi-dimensional evaluator — reporting both per-response and
-overall scores.
+Given an incoming support email, this system:
 
+1. Retrieves similar historical email/reply pairs.
+2. Uses a GenAI LLM to draft a suggested response grounded in those examples.
+3. Evaluates the suggested response using an explainable, multi-dimensional quality metric.
+4. Reports both per-response and overall evaluation results.
+
+The project focuses heavily on **how to evaluate whether a generated email reply is actually good**, rather than treating exact string matching as "accuracy."
+
+---
+
+## Project Structure
+
+```text
+data/
+├── emails.jsonl              # 220 synthetic email/reply pairs
+└── generate_dataset.py       # Dataset generation script
+
+src/
+├── retriever.py              # TF-IDF retrieval over historical emails
+├── generator.py              # Few-shot RAG prompt + response generation
+├── llm_client.py             # Gemini API backend + offline mock fallback
+├── evaluator.py              # Core multi-dimensional response evaluator
+└── pipeline.py               # End-to-end pipeline and report generation
+
+eval/
+├── gold_labels.jsonl         # 12 hand-authored evaluation examples
+└── validate_metric.py        # Validates automatic metric against gold ratings
+
+scripts/
+└── run_demo.py               # CLI entry point
+
+tests/
+└── test_pipeline.py          # Smoke/unit tests
+
+reports/
+├── per_response_report.json
+├── overall_report.json
+├── eval_report.md
+└── metric_validation.json
 ```
-data/emails.jsonl          220 synthetic (email, sent_reply, required_elements) records
-src/retriever.py           TF-IDF retrieval over past emails (the "RAG" part)
-src/generator.py           builds a few-shot RAG prompt, calls the LLM
-src/llm_client.py          real Anthropic API backend + offline mock fallback
-src/evaluator.py           <-- the core: turns "reply quality" into scores
-src/pipeline.py            wires it all together, writes reports
-eval/gold_labels.jsonl     hand-labeled (email, reply, human rating) set
-eval/validate_metric.py    checks the automatic metric against those labels
-scripts/run_demo.py        CLI entry point
-tests/test_pipeline.py     smoke tests (no API key required)
-reports/                   generated output (JSON + Markdown reports)
-```
+
+---
 
 ## Quickstart
 
+### 1. Install dependencies
+
 ```bash
 pip install -r requirements.txt
+```
 
-# Real run (recommended) — uses the Claude API for both generation and judging
-export ANTHROPIC_API_KEY=sk-ant-...
+### 2. Configure Gemini
+
+Create a `.env` file:
+
+```env
+GEMINI_API_KEY=your_api_key_here
+```
+
+The project uses **Gemini 2.5 Flash** for both response generation and LLM-based evaluation.
+
+### 3. Generate suggested replies and evaluate them
+
+```bash
+python scripts/run_demo.py
+```
+
+You can also specify the number of evaluation examples:
+
+```bash
 python scripts/run_demo.py --n 30
+```
 
-# Metric sanity-check against hand-labeled examples
+### 4. Validate the evaluation metric
+
+```bash
 python eval/validate_metric.py
+```
 
-# Smoke tests (no API key needed — exercises the offline mock backend)
+This runs the evaluator against the 12-example gold benchmark and compares the automated score with the benchmark's human-authored ratings.
+
+### 5. Run tests
+
+```bash
 python tests/test_pipeline.py
 ```
 
-Without `ANTHROPIC_API_KEY` set, everything still *runs* end-to-end using a
-deliberately simple offline mock LLM (`src/llm_client.py`) — useful to prove
-the pipeline is wired correctly with zero setup, but **not** representative
-of real quality (see "Honest results from this repo" below, where the mock's
-own numbers make this point for us).
-
-Outputs land in `reports/`: `per_response_report.json`, `overall_report.json`,
-`eval_report.md` (human-readable), and `reports/metric_validation.json`.
+The tests can run without an API key because the project includes an offline mock backend.
 
 ---
 
-## 1. The dataset — where it came from and why it's representative
+# 1. Dataset — Where It Came From
 
-Real support mailboxes are private and full of PII, so there's no way to
-"source" a public dataset that's actually usable here without either
-violating someone's privacy or using data with unknown license/quality
-issues. Instead, `data/generate_dataset.py` **programmatically builds** 220
-synthetic (incoming email, sent reply) pairs simulating a mid-size
-e-commerce company's support inbox, across 10 recurring intents (order
-status, refunds, defective products, address changes, subscription
-cancellation, billing disputes, password resets, feature feedback, sales
-inquiries, scheduling) — 22 examples each, with randomized names, order
-numbers, products, amounts, dates, and some light informality/typos.
+Real customer-support mailboxes contain private information and PII, making them unsuitable for publishing as part of a coding challenge.
 
-**Why this is a fair stand-in for a real inbox, not a toy:**
-- Real support inboxes are dominated by a small number of repeating intents
-  answered from a consistent "house style" and a fixed set of policies
-  (refund windows, discount tiers, escalation paths) — exactly what's
-  modeled here. This is the regime where retrieval-augmented generation from
-  historical replies is actually a sound approach (see §2).
-- Every example carries a `required_elements` checklist — e.g. for a refund
-  email: *"references order number", "gives a refund timeframe", "mentions
-  return instructions"*. This is authored **as part of building the
-  dataset**, and is the backbone of the evaluator (§3): it defines what a
-  correct reply must accomplish independent of exact wording, so we're not
-  grading against a single "correct" string.
+Instead, `data/generate_dataset.py` programmatically creates **220 synthetic email/reply pairs** representing a mid-size e-commerce support inbox.
 
-**Honest limitations:** synthetic data is more uniform than a real inbox —
-real emails are messier, sometimes ramble across two intents at once, and
-"house style" drifts across agents/years. The `required_elements` checklists
-are also authored by us, i.e. they encode our judgment of what a good reply
-needs, not a company's actual QA rubric. Swapping in a real (properly
-licensed/anonymized) support-ticket export would be a drop-in replacement as
-long as it's converted to the same JSONL schema with a `required_elements`
-field added per example (which would need to be human-annotated).
+The dataset covers 10 recurring support intents:
 
----
+* Order status
+* Refund requests
+* Defective products
+* Address changes
+* Subscription cancellation
+* Billing disputes
+* Password resets
+* Feature feedback
+* Sales inquiries
+* Scheduling
 
-## 2. Generating suggested responses (Gen AI)
+There are 22 examples per category, with variation in:
 
-**Approach: retrieval-augmented few-shot prompting**, not fine-tuning or a
-classifier.
+* Customer names
+* Order numbers
+* Products
+* Dates
+* Amounts
+* Customer wording
+* Informality and minor typos
 
-1. `TfidfRetriever` (`src/retriever.py`) retrieves the *k=3* most similar
-   historical emails (TF-IDF cosine similarity over subject + body) from the
-   training split.
-2. `ReplyGenerator` (`src/generator.py`) builds a prompt containing those 3
-   (email, reply) pairs as few-shot examples plus the new incoming email, and
-   asks Claude to write a new reply in the same style, grounded in the new
-   email's specific facts.
+Each example also contains a `required_elements` checklist describing what a successful response should accomplish.
 
-**Why RAG + few-shot over the alternatives:**
+For example, a refund response may need to:
 
-| Approach | Verdict here | Why |
-|---|---|---|
-| Fine-tuning an LLM | ❌ not used | 220 examples is too little to fine-tune without overfitting/memorizing; retraining is needed every time a policy changes (e.g. refund window); slow to iterate. Only justified with a much larger, continuously-refreshed dataset. |
-| Static few-shot (same fixed examples every time) | ❌ not used | Simpler, but a customer emailing about a billing dispute gets shown examples about scheduling — weak style/content transfer for less common intents. |
-| **RAG + few-shot (chosen)** | ✅ | Retrieval keeps examples relevant to *this* email; adding/editing a historical example takes effect on the very next call, no retraining; fully inspectable (you can see exactly which past examples informed a given suggestion via `retrieved_examples` in the report). |
+* Reference the order number
+* Confirm that the refund is being processed
+* Give a refund timeframe
+* Provide return/shipping instructions
 
-**Why TF-IDF retrieval, not a neural embedding model:** this keeps the
-retriever fully offline/dependency-light and works well in a narrow domain
-with shared vocabulary ("refund", "order", "subscription"). Its weakness is
-paraphrases with no shared words ("my package never came" vs. "where's my
-order") — `src/retriever.py` includes an `EmbeddingRetriever` stub showing
-exactly where a real embeddings API would slot in as a one-class swap if
-that mattered more than offline-runnability.
+This allows the evaluation system to judge **whether the required outcome was achieved**, rather than whether the response matches one particular reference sentence.
 
-**Why an LLM at all vs. a classifier:** the task is *generation* (produce
-novel, well-formed prose addressing this email's specific facts), which is
-what a classifier fundamentally cannot do — a classifier could at best pick
-"which of these N template replies to send," which breaks the moment an
-email doesn't match a known template.
+### Why this is representative
+
+Support inboxes commonly contain a relatively small number of recurring intents handled according to consistent business policies and communication styles.
+
+That makes retrieval from historical responses a reasonable approach for this task: a new refund request can be grounded using previous refund responses rather than relying only on the LLM's general knowledge.
+
+### Limitations
+
+The dataset is still synthetic and therefore does not capture the full messiness of a real support inbox.
+
+Real data may contain:
+
+* Multiple intents in one email
+* Much greater linguistic variation
+* Incomplete information
+* Long conversation histories
+* Policy changes over time
+* Different writing styles across support agents
+
+The `required_elements` checklists are also authored as part of this project. They represent the project's definition of a good response rather than an actual company's QA rubric.
+
+A properly licensed and anonymized support-ticket dataset could replace the synthetic dataset while keeping the same overall pipeline.
 
 ---
 
-## 3. Measuring accuracy — the core of this project
+# 2. Generating Suggested Responses
 
-### What does "accurate" even mean for a suggested reply?
+## Approach: Retrieval-Augmented Few-Shot Prompting
 
-Exact match is nearly meaningless here: two replies can use completely
-different words and both be excellent, or share most of the same words and
-one still misses the point. So "accurate" is decomposed into the things a
-human reviewer would actually check when approving a suggested reply before
-it goes out:
+The system uses **RAG + few-shot prompting** rather than fine-tuning or a fixed template system.
 
-1. **Coverage** — does the reply address the *specific facts and required
-   actions this email calls for* (order number cited, a refund timeframe
-   actually given, etc.)? Checked against the dataset's `required_elements`
-   checklist — a per-example, auditable ground truth that's independent of
-   wording.
-2. **Relevance** — is it actually about what the customer asked, not generic
-   boilerplate?
-3. **Completeness** — does it leave the customer with a clear resolution or
-   next step, or is it a half-answer?
-4. **Tone** — does it read as professional and appropriately empathetic?
+### Step 1 — Retrieve relevant historical examples
 
-(2)–(4) are scored 1–5 by an **LLM-as-judge** with a fixed rubric prompt
-(`src/evaluator.py::JUDGE_PROMPT`) that also returns a short **rationale**
-and, for (1), a true/false judgement per required element (so coverage is
-grounded in checking specific facts, not vibes). We use an LLM judge for
-these because they're exactly the qualities a human reviewer uses, and no
-cheap string-based metric captures "is this actually complete" or "is the
-tone right."
+`TfidfRetriever` retrieves the top 3 historical emails using TF-IDF cosine similarity over the email subject/body.
 
-**Lexical similarity to the one historical reply is deliberately *not* the
-score** — it's computed (TF-IDF cosine) and reported as a *diagnostic* field
-only, because rewarding closeness to one specific historical string would
-penalize equally-good differently-worded replies and could reward a reply
-that reuses the same words while missing the point.
+### Step 2 — Build a grounded prompt
 
-### Aggregate score
+`ReplyGenerator` places the retrieved historical `(email, reply)` pairs into the prompt as few-shot examples together with the new incoming email.
 
-```
-overall_score (0–100) = 20 * (0.40·coverage + 0.25·relevance + 0.20·completeness + 0.15·tone) / 5
-```
+The LLM is instructed to:
 
-Coverage is weighted highest because a polite, on-topic reply that misses
-the customer's actual ask (wrong/no order number, no refund timeframe) is
-the failure mode that actually generates complaints and escalations; tone is
-comparatively the easiest thing to fix in a one-line edit.
+* Answer the customer's actual request
+* Use facts from the incoming email
+* Follow the communication style demonstrated by relevant examples
+* Avoid inventing unsupported information
 
-### Validating the metric against real quality
+### Step 3 — Generate the suggested response
 
-Automatic metrics can be self-consistent nonsense, so `eval/gold_labels.jsonl`
-holds 12 hand-authored (email, candidate reply, 1–5 human rating) examples —
-deliberately including clearly bad candidates (ignores the actual question,
-never confirms the action taken, dodges the real ask) next to clearly good
-ones for the *same* email, so a working metric should cleanly separate them.
-`eval/validate_metric.py` runs the real evaluator on all 12 and reports
-Pearson/Spearman correlation against the human ratings.
+Gemini 2.5 Flash generates the final suggested reply.
 
-**Honest result from this repo, as actually run in this environment:** this
-sandbox has no network access, so the number below was produced with the
-**offline mock judge**, not the real Claude judge:
-
-```
-Pearson r  = -0.556 (p=0.060)
-Spearman ρ = -0.656 (p=0.021)
-```
-
-That's a *negative* correlation — and that's an honest, useful result, not a
-bug: the mock judge (`MockBackend._mock_judge` in `src/llm_client.py`) is an
-intentionally dumb keyword-overlap heuristic with no real semantic
-understanding, and this validation run demonstrates exactly why we don't
-ship that as the real metric — a naive lexical-overlap scorer actively
-disagrees with human judgment on this task (e.g. it can't tell that "have
-you tried charging it overnight?" dodges a refund request, and even rewards
-replies that repeat words from the required-elements list without actually
-satisfying them). **Anyone running this with `ANTHROPIC_API_KEY` set will
-exercise the real LLM-judge path** (`src/evaluator.py` calling
-`AnthropicBackend`), which is the one actually designed against the rubric
-above; re-run `python eval/validate_metric.py` with the key set to get the
-real correlation before trusting scores from a live run. We were not able to
-produce that number ourselves inside this sandboxed, network-disabled
-environment — this is stated plainly rather than fabricated.
-
-**Further limitations of even the real-judge validation:** n=12 and the
-"human" ratings are self-authored by the person who wrote the rubric, not an
-independent study — so at best this is a plausibility check ("does the
-metric separate obviously-bad from obviously-good replies"), not a
-statistically powered validation. A real deployment should replace/augment
-this with: (a) a larger gold set labeled by actual support QA staff blind to
-the automatic score, (b) inter-rater agreement among 2–3 human raters before
-trusting any single human label as ground truth, and (c) periodically
-re-checking correlation as the prompt/model changes, since LLM judges drift.
-
-### Reporting
-
-- **Per-response** (`reports/per_response_report.json`, and the table in
-  `reports/eval_report.md`): the incoming email, generated reply, retrieved
-  few-shot examples used, all four sub-scores, the overall score, the
-  per-element true/false coverage breakdown, the judge's written rationale,
-  and the diagnostic lexical-similarity number.
-- **Overall** (`reports/overall_report.json`): mean and stdev of each
-  dimension across the test set, mean diagnostic lexical similarity, and a
-  pass-rate (`overall_score ≥ 70`) as one simple deployment-readiness signal.
+The retrieved examples are retained in the evaluation report so that the output is inspectable rather than being an opaque generation.
 
 ---
 
-## How AI tools were used
+## Why RAG + Few-Shot?
 
-This repository (dataset generator, retriever, generator, evaluator,
-pipeline, tests, and this README) was built with Claude as a pair-programmer
-in an agentic coding session: Claude wrote the code and prose in this repo
-directly, iterating in a real sandbox — the dataset was generated and
-inspected, the pipeline was actually executed end-to-end (offline mock mode,
-since the sandbox has no network access to call the live API), the test
-suite was actually run and passed, and the metric-validation script was
-actually executed to produce the correlation numbers quoted above. Where the
-sandbox's lack of network access is a real limitation (no live Claude-API
-run was possible here), that's stated explicitly above rather than
-simulated or invented.
+| Approach        | Decision   | Reason                                                                                                                                       |
+| --------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| Fine-tuning     | Not used   | 220 examples is too small for reliable fine-tuning and introduces retraining overhead whenever support policies change.                      |
+| Static few-shot | Not used   | Fixed examples may be irrelevant to the current intent.                                                                                      |
+| RAG + few-shot  | **Chosen** | Retrieves examples relevant to the current email, requires no retraining when examples change, and makes the grounding examples inspectable. |
 
-## Known limitations / what I'd do next with more time
+### Why TF-IDF instead of embeddings?
 
-- Retrieval is TF-IDF, not semantic embeddings — see `EmbeddingRetriever`
-  stub in `src/retriever.py` for the intended upgrade path.
-- The gold-label validation set is small and self-authored; needs real
-  blind human raters at larger n for a trustworthy correlation number.
-- No handling yet for multi-intent emails (an email that's both a complaint
-  *and* a scheduling request) — the dataset and required_elements schema
-  assume one dominant intent per email.
-- The LLM judge is itself an LLM call, so it inherits whatever biases/blind
-  spots the judge model has (e.g. possible leniency, position bias if ever
-  extended to pairwise comparisons) — worth periodically auditing judge
-  outputs against the human gold set as models change.
+TF-IDF keeps the retrieval system:
+
+* Offline-capable
+* Dependency-light
+* Easy to inspect
+* Reproducible
+
+It works reasonably well in this narrow domain because related emails tend to share vocabulary such as "refund", "order", "subscription", etc.
+
+Its main weakness is semantic paraphrasing. For example:
+
+> "My package never came"
+
+and
+
+> "Where is my order?"
+
+may have limited lexical overlap despite having similar intent.
+
+The repository includes an `EmbeddingRetriever` stub showing where a semantic embedding-based retriever could replace TF-IDF later.
+
+---
+
+# 3. Evaluation — The Core of the Project
+
+## What Does "Accurate" Mean for an Email Reply?
+
+Exact-match accuracy is not appropriate for generative email responses.
+
+Two responses can use completely different wording while both being excellent. Conversely, a response can contain many words from a reference answer while still failing to address the customer's actual request.
+
+Therefore, this project defines response quality using four dimensions.
+
+### 1. Coverage
+
+Does the response satisfy the specific requirements of the incoming email?
+
+Examples:
+
+* Correct order number
+* Refund timeframe
+* Return instructions
+* Confirmation that an action was completed
+
+Coverage is evaluated against the example's `required_elements` checklist.
+
+Each required element receives a true/false judgement, making the result auditable.
+
+### 2. Relevance
+
+Does the response directly address what the customer asked, rather than producing generic or unrelated text?
+
+### 3. Completeness
+
+Does the response provide a useful resolution or next step, rather than giving only a partial answer?
+
+### 4. Tone
+
+Is the response professional, clear, and appropriately empathetic?
+
+Relevance, completeness, and tone are scored from 1–5 by an **LLM-as-judge** using the fixed rubric in:
+
+```text
+src/evaluator.py
+```
+
+The judge also provides a short rationale explaining its assessment.
+
+---
+
+## Aggregate Quality Score
+
+The four dimensions are combined into a 0–100 score:
+
+```text
+overall_score =
+    20 × (
+        0.40 × coverage
+      + 0.25 × relevance
+      + 0.20 × completeness
+      + 0.15 × tone
+    )
+```
+
+All component scores are normalized to a 1–5 scale before aggregation.
+
+Coverage receives the highest weight because a response that sounds professional but fails to perform or explain the requested action is still a poor support response.
+
+Tone receives the lowest weight because it is generally easier to correct during final response editing than a missing business-critical action.
+
+---
+
+## Why Not Use Lexical Similarity as the Main Metric?
+
+The system also calculates TF-IDF cosine similarity against the historical reply as a **diagnostic only**.
+
+It is deliberately excluded from the quality score.
+
+A reply should not receive a high score merely because it copies vocabulary from an old response. Likewise, a correctly written response should not be penalized simply because it uses different wording.
+
+This distinction is important for generative systems.
+
+---
+
+# 4. Metric Validation
+
+A scoring metric should itself be tested.
+
+`eval/gold_labels.jsonl` contains 12 hand-authored evaluation cases covering six support categories.
+
+The benchmark intentionally contains paired examples:
+
+* Clearly good responses
+* Clearly weak responses to the same underlying customer request
+
+Examples include:
+
+* A refund response that gives the order number, refund timeframe, and return instructions vs. a generic filler response.
+* An order-status response with a concrete shipping timeframe vs. a vague "one or two weeks" response.
+* A defective-product response offering a replacement/refund vs. a response that only suggests troubleshooting.
+* A cancellation response confirming no future charges vs. a response that attempts to sell another plan.
+* A sales response giving a concrete bulk discount vs. a generic sales message.
+* A password-reset response with an action and fallback vs. a response that simply repeats the standard reset instruction.
+
+The validation script runs the **same evaluator used by the main pipeline** against these examples and compares the automated scores with the benchmark's human-authored 1–5 ratings.
+
+### Observed validation result
+
+The current Gemini-based evaluator produced:
+
+```text
+Pearson r  = 0.987
+Spearman ρ = 0.992
+n = 12
+```
+
+This indicates that, on this small benchmark, the automated metric strongly separates the clearly good responses from the clearly weak ones.
+
+### Important interpretation
+
+**This is not "97.94% accuracy."**
+
+The correlation result is a validation of the **evaluation metric**, not a measurement of how often the response generator produces correct answers in the real world.
+
+Also, the benchmark is small and its human ratings were authored by the project developer. Therefore, this should be treated as a **sanity/plausibility check**, not as statistically representative human-evaluation research.
+
+A production system should use a substantially larger benchmark labeled independently by multiple support-quality reviewers.
+
+---
+
+# 5. Evaluation Reports
+
+The pipeline produces both detailed and aggregate reports.
+
+### Per-response report
+
+`reports/per_response_report.json` contains:
+
+* Incoming email
+* Generated reply
+* Retrieved historical examples
+* Coverage score
+* Relevance score
+* Completeness score
+* Tone score
+* Overall score
+* Per-element coverage
+* LLM judge rationale
+* Diagnostic lexical similarity
+
+This makes it possible to inspect **why a particular response received its score**.
+
+### Overall report
+
+`reports/overall_report.json` contains:
+
+* Number of evaluated responses
+* Mean score for each dimension
+* Standard deviation
+* Mean overall quality score
+* Diagnostic lexical similarity
+* Pass rate using `overall_score >= 70`
+
+The pass rate is a simple operational signal and should not be interpreted as accuracy.
+
+---
+
+# 6. Current System-Level Evaluation
+
+A live run of the pipeline evaluated 44 generated responses.
+
+The resulting aggregate scores were:
+
+```text
+Responses evaluated:       44
+
+Mean coverage:              4.81 / 5
+Mean relevance:             5.00 / 5
+Mean completeness:          4.86 / 5
+Mean tone:                  5.00 / 5
+
+Mean overall quality:       97.94 / 100
+Pass rate (>=70):           97.7%
+```
+
+These results show that the current synthetic test set is relatively easy for the generator.
+
+They **should not be interpreted as production accuracy**. The generated responses are evaluated on a controlled synthetic dataset whose intents and policies are relatively well-defined.
+
+The 12-example gold benchmark is therefore especially important because it deliberately includes failure cases designed to test whether the evaluator can distinguish useful responses from superficially plausible ones.
+
+---
+
+# 7. AI Tool Disclosure
+
+This project was developed with AI coding assistance.
+
+Claude was used as a pair-programming tool during development to help:
+
+* Design the project structure
+* Implement and refine Python modules
+* Debug the evaluation pipeline
+* Develop tests
+* Review generated outputs
+* Draft and refine documentation
+
+The final implementation was executed and tested locally, and the dataset and evaluation reports were generated from the repository's actual code.
+
+The **response generation and LLM-based judging in the current implementation use Gemini 2.5 Flash** through the Google GenAI API.
+
+The project also contains an offline mock backend so that the pipeline and tests can be exercised without an API key. The mock backend is intended for development/testing and is **not representative of real GenAI quality**.
+
+---
+
+# 8. Known Limitations and Future Improvements
+
+### Current limitations
+
+* **Synthetic dataset:** Real support data would provide more realistic language and edge cases.
+* **TF-IDF retrieval:** Semantic embeddings would improve retrieval for paraphrased requests.
+* **Small validation benchmark:** 12 examples are insufficient for statistically strong evaluation.
+* **Self-authored ratings:** Independent human raters are needed for stronger metric validation.
+* **Single-intent assumption:** Multi-intent emails are not currently modeled.
+* **LLM-as-judge limitations:** The judge can inherit biases and blind spots from its underlying model.
+* **Potential judge drift:** Changes to the judge model or prompt could change evaluation behavior.
+
+### Next improvements
+
+1. Replace TF-IDF with a production embedding model and compare retrieval quality.
+2. Expand the gold benchmark substantially.
+3. Use multiple independent human raters and measure inter-rater agreement.
+4. Evaluate difficult multi-intent and ambiguous emails.
+5. Add factuality/unsupported-claim detection.
+6. Compare different LLMs as both generator and evaluator.
+7. Add retrieval-quality metrics such as Recall@k.
+8. Introduce an automated regression suite so model/prompt changes cannot silently degrade response quality.
+
+---
+
+# Design Summary
+
+The project deliberately separates three concerns:
+
+```text
+                 Historical Emails
+                        │
+                        ▼
+                 ┌─────────────┐
+Incoming Email ─►│  Retriever  │
+                 └──────┬──────┘
+                        │
+                 Top-k examples
+                        │
+                        ▼
+                 ┌─────────────┐
+                 │  GenAI LLM  │
+                 └──────┬──────┘
+                        │
+                 Suggested Reply
+                        │
+                        ▼
+                 ┌─────────────┐
+                 │  Evaluator  │
+                 │             │
+                 │ Coverage    │
+                 │ Relevance   │
+                 │ Completeness│
+                 │ Tone        │
+                 └──────┬──────┘
+                        │
+                        ▼
+              Per-response + Overall
+                     Reports
+```
+
+The central design principle is:
+
+> **For generative response systems, accuracy is not "does the output match a reference string?" — it is "does the response correctly address the customer's intent, satisfy the required actions, provide a useful resolution, and communicate appropriately?"**

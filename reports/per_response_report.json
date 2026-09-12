@@ -8,7 +8,7 @@
       "confirms no future charges",
       "mentions access until end of current period"
     ],
-    "generated_reply": "Hi Maria,\n\nI've gone ahead and canceled your Annual subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\nTaylor",
+    "generated_reply": "Hi Maria,\n\nI've gone ahead and canceled your Annual subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\nCasey",
     "retrieved_examples": [
       {
         "id": "em_0014",
@@ -26,14 +26,18 @@
     "historical_reply": "Hi Maria,\n\nI've gone ahead and canceled your Annual subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\nRobin",
     "evaluation": {
       "scores": {
-        "coverage": 0.0,
-        "relevance": 1.5,
-        "tone": 3.5,
-        "completeness": 1.0,
-        "overall_score": 22.0
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
       },
-      "element_coverage": {},
-      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
+      "element_coverage": {
+        "confirms the subscription was canceled": true,
+        "confirms no future charges": true,
+        "mentions access until end of current period": true
+      },
+      "rationale": "The reply directly addresses the customer's request to cancel their subscription. It confirms the cancellation, assures no future charges, and clarifies access until the end of the current billing period. The tone is professional and helpful.",
       "diagnostic_lexical_similarity_to_historical_reply": 0.924
     }
   },
@@ -46,7 +50,7 @@
       "gives a concrete discount or next step",
       "asks for details needed to finalize (quantity/address)"
     ],
-    "generated_reply": "Hi Wei,\n\nGreat question! For orders of 5+ units of the NovaCharge Power Bank, we can offer a 15% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nJamie",
+    "generated_reply": "Hi Diego,\n\nGreat question! For orders of 10+ units of the NovaCharge Power Bank, we can offer a 15% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\n[Agent Name]",
     "retrieved_examples": [
       {
         "id": "em_0158",
@@ -64,15 +68,19 @@
     "historical_reply": "Hi Diego,\n\nGreat question! For orders of 10+ units of the NovaCharge Power Bank, we can offer a 10% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nJamie",
     "evaluation": {
       "scores": {
-        "coverage": 0.0,
-        "relevance": 1.2,
-        "tone": 3.5,
-        "completeness": 1.0,
-        "overall_score": 20.5
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
       },
-      "element_coverage": {},
-      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
-      "diagnostic_lexical_similarity_to_historical_reply": 0.787
+      "element_coverage": {
+        "addresses bulk discount for 10 units": true,
+        "gives a concrete discount or next step": true,
+        "asks for details needed to finalize (quantity/address)": true
+      },
+      "rationale": "The reply directly answers the customer's question about a bulk discount for 10 units. It provides a specific discount percentage and outlines the next steps needed to finalize the quote, including asking for the exact quantity and shipping address. The tone is professional and helpful.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.886
     }
   },
   {
@@ -84,7 +92,7 @@
       "gives a concrete discount or next step",
       "asks for details needed to finalize (quantity/address)"
     ],
-    "generated_reply": "Hi Wei,\n\nGreat question! For orders of 20+ units of the BrightPath Desk Chair, we can offer a 10% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nMorgan",
+    "generated_reply": "Hi Jordan,\n\nGreat question! For orders of 5+ units of the BrightPath Desk Chair, we can offer a 10% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\n[Agent Name]",
     "retrieved_examples": [
       {
         "id": "em_0188",
@@ -102,15 +110,19 @@
     "historical_reply": "Hi Jordan,\n\nGreat question! For orders of 5+ units of the BrightPath Desk Chair, we can offer a 10% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nMorgan",
     "evaluation": {
       "scores": {
-        "coverage": 0.0,
-        "relevance": 1.2,
-        "tone": 3.5,
-        "completeness": 1.0,
-        "overall_score": 20.5
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
       },
-      "element_coverage": {},
-      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
-      "diagnostic_lexical_similarity_to_historical_reply": 0.898
+      "element_coverage": {
+        "addresses bulk discount for 5 units": true,
+        "gives a concrete discount or next step": true,
+        "asks for details needed to finalize (quantity/address)": true
+      },
+      "rationale": "The reply directly addresses the customer's question about a bulk discount for 5 units. It provides a concrete 10% discount and clearly outlines the next steps, asking for the exact quantity and shipping address to finalize a quote. The tone is professional and helpful.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.929
     }
   },
   {
@@ -123,7 +135,7 @@
       "gives a refund timeframe",
       "mentions return/shipping instructions"
     ],
-    "generated_reply": "Hi Alex,\n\nSorry to hear that! I've started a refund for order #418493; you should see the amount back on your original payment method within 10 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nMorgan",
+    "generated_reply": "Hi Ines,\n\nSorry to hear that! I've started a refund for order #308993; you should see the amount back on your original payment method within 7 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nMorgan",
     "retrieved_examples": [
       {
         "id": "em_0181",
@@ -141,15 +153,20 @@
     "historical_reply": "Hi Ines,\n\nSorry to hear that! I've started a refund for order #308993; you should see the amount back on your original payment method within 5 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nMorgan",
     "evaluation": {
       "scores": {
-        "coverage": 0.0,
-        "relevance": 1.0,
-        "tone": 3.5,
-        "completeness": 1.0,
-        "overall_score": 19.5
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
       },
-      "element_coverage": {},
-      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
-      "diagnostic_lexical_similarity_to_historical_reply": 0.85
+      "element_coverage": {
+        "references order number #308993": true,
+        "confirms the refund is being processed": true,
+        "gives a refund timeframe": true,
+        "mentions return/shipping instructions": true
+      },
+      "rationale": "The reply directly addresses the customer's request for a refund due to a damaged item. It confirms the refund, provides a timeframe, and gives clear instructions for returning the item, all while maintaining a professional and empathetic tone.",
+      "diagnostic_lexical_similarity_to_historical_reply": 1.0
     }
   },
   {
@@ -161,7 +178,7 @@
       "gives a concrete discount or next step",
       "asks for details needed to finalize (quantity/address)"
     ],
-    "generated_reply": "Hi Jordan,\n\nI'm really sorry about that experience with your Aurora Desk Lamp -- that's not the quality we aim for. I can send a free replacement right away, or process a full refund for order #490017, whichever you'd prefer. Just reply and let me know which you'd like.\n\nApologies again,\nTaylor",
+    "generated_reply": "Hi Ines,\n\nThanks for your interest in the Aurora Desk Lamp! We do offer a 10% discount on orders of 5 units or more. If you'd like to proceed, I can send you a custom invoice reflecting this discount. Just let me know!\n\nBest,\nTaylor",
     "retrieved_examples": [
       {
         "id": "em_0212",
@@ -179,15 +196,19 @@
     "historical_reply": "Hi Ines,\n\nGreat question! For orders of 5+ units of the Aurora Desk Lamp, we can offer a 15% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nTaylor",
     "evaluation": {
       "scores": {
-        "coverage": 0.0,
-        "relevance": 1.2,
-        "tone": 3.5,
-        "completeness": 1.0,
-        "overall_score": 20.5
+        "coverage": 3.33,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 86.7
       },
-      "element_coverage": {},
-      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
-      "diagnostic_lexical_similarity_to_historical_reply": 0.172
+      "element_coverage": {
+        "addresses bulk discount for 5 units": true,
+        "gives a concrete discount or next step": true,
+        "asks for details needed to finalize (quantity/address)": false
+      },
+      "rationale": "The reply directly addresses the customer's question about a bulk discount for 5 units and provides a concrete 10% discount. It also offers a clear next step to send a custom invoice. However, it does not explicitly ask for details like the exact quantity or shipping address needed to finalize the order, which would be necessary for an invoice.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.378
     }
   },
   {
@@ -199,7 +220,7 @@
       "confirms no future charges",
       "mentions access until end of current period"
     ],
-    "generated_reply": "Hi Wei,\n\nI've gone ahead and canceled your Monthly subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\nTaylor",
+    "generated_reply": "Hi Sofia,\n\nI've gone ahead and canceled your Monthly subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\n[Agent Name]",
     "retrieved_examples": [
       {
         "id": "em_0084",
@@ -217,14 +238,18 @@
     "historical_reply": "Hi Sofia,\n\nI've gone ahead and canceled your Monthly subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\nTaylor",
     "evaluation": {
       "scores": {
-        "coverage": 0.0,
-        "relevance": 1.3,
-        "tone": 3.5,
-        "completeness": 1.0,
-        "overall_score": 21.0
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
       },
-      "element_coverage": {},
-      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
+      "element_coverage": {
+        "confirms the subscription was canceled": true,
+        "confirms no future charges": true,
+        "mentions access until end of current period": true
+      },
+      "rationale": "The reply directly addresses the customer's request to cancel their subscription. It confirms the cancellation, assures no future charges, and clarifies access until the end of the current billing period. The tone is professional and helpful.",
       "diagnostic_lexical_similarity_to_historical_reply": 0.924
     }
   },
@@ -238,7 +263,7 @@
       "gives a refund timeframe",
       "mentions return/shipping instructions"
     ],
-    "generated_reply": "Hi Diego,\n\nSorry to hear that! I've started a refund for order #653913; you should see the amount back on your original payment method within 7 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nJamie",
+    "generated_reply": "Hi Liam,\n\nSorry to hear that! I've started a refund for order #529694; you should see the amount back on your original payment method within 7 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nMorgan",
     "retrieved_examples": [
       {
         "id": "em_0111",
@@ -256,15 +281,20 @@
     "historical_reply": "Hi Liam,\n\nSorry to hear that! I've started a refund for order #529694; you should see the amount back on your original payment method within 7 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nJamie",
     "evaluation": {
       "scores": {
-        "coverage": 0.0,
-        "relevance": 1.0,
-        "tone": 3.5,
-        "completeness": 1.0,
-        "overall_score": 19.5
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
       },
-      "element_coverage": {},
-      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
-      "diagnostic_lexical_similarity_to_historical_reply": 0.876
+      "element_coverage": {
+        "references order number #529694": true,
+        "confirms the refund is being processed": true,
+        "gives a refund timeframe": true,
+        "mentions return/shipping instructions": true
+      },
+      "rationale": "The reply directly addresses Liam's request for a refund, confirming it's processed and providing all necessary details. The tone is professional and helpful, and all required elements are covered clearly and concisely.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.936
     }
   },
   {
@@ -276,7 +306,7 @@
       "gives a concrete shipping timeframe",
       "offers a next step if the timeline is missed"
     ],
-    "generated_reply": "Hi Lucas,\n\nThanks for reaching out! I checked order #518359 and it's on track to ship within 1 business day(s). You'll get a tracking email as soon as it leaves the warehouse. Let us know if you don't see it by then.\n\nBest,\nJamie",
+    "generated_reply": "Hi Emma,\n\nThanks for reaching out! I checked order #782554 and it's on track to ship within 1 business day(s). You'll get a tracking email as soon as it leaves the warehouse. Let us know if you don't see it by then.\n\nBest,\nJamie",
     "retrieved_examples": [
       {
         "id": "em_0020",
@@ -294,15 +324,19 @@
     "historical_reply": "Hi Emma,\n\nThanks for reaching out! I checked order #782554 and it's on track to ship within 3 business day(s). You'll get a tracking email as soon as it leaves the warehouse. Let us know if you don't see it by then.\n\nBest,\nJamie",
     "evaluation": {
       "scores": {
-        "coverage": 0.0,
-        "relevance": 1.1,
-        "tone": 3.5,
-        "completeness": 1.0,
-        "overall_score": 20.0
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
       },
-      "element_coverage": {},
-      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
-      "diagnostic_lexical_similarity_to_historical_reply": 0.835
+      "element_coverage": {
+        "references order number #782554": true,
+        "gives a concrete shipping timeframe": true,
+        "offers a next step if the timeline is missed": true
+      },
+      "rationale": "The reply directly addresses the customer's inquiry about their order status and shipping. It provides a clear shipping timeframe and a next step if the customer doesn't receive the tracking information as expected. The tone is professional and helpful.",
+      "diagnostic_lexical_similarity_to_historical_reply": 1.0
     }
   },
   {
@@ -314,7 +348,7 @@
       "explains or investigates the charge",
       "offers next step if customer disagrees"
     ],
-    "generated_reply": "Hi Aisha,\n\nThanks for flagging this. I looked into the $49.0 charge and it matches [order/renewal] on your account -- I've attached the invoice for reference. If this still doesn't look right to you, let me know and I'll open a dispute review right away.\n\nBest,\nCasey",
+    "generated_reply": "Hi Aisha,\n\nThanks for flagging this. I looked into the $49.0 charge and it matches [order/renewal] on your account -- I've attached the invoice for reference. If this still doesn't look right to you, let me know and I'll open a dispute review right away.\n\nBest,\n[Agent Name]",
     "retrieved_examples": [
       {
         "id": "em_0015",
@@ -332,15 +366,19 @@
     "historical_reply": "Hi Aisha,\n\nThanks for flagging this. I looked into the $49.0 charge and it matches [order/renewal] on your account -- I've attached the invoice for reference. If this still doesn't look right to you, let me know and I'll open a dispute review right away.\n\nBest,\nCasey",
     "evaluation": {
       "scores": {
-        "coverage": 0.0,
-        "relevance": 1.2,
-        "tone": 3.5,
-        "completeness": 1.0,
-        "overall_score": 20.5
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
       },
-      "element_coverage": {},
-      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
-      "diagnostic_lexical_similarity_to_historical_reply": 1.0
+      "element_coverage": {
+        "mentions the amount $49.0": true,
+        "explains or investigates the charge": true,
+        "offers next step if customer disagrees": true
+      },
+      "rationale": "",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.936
     }
   },
   {
@@ -352,7 +390,7 @@
       "gives a concrete discount or next step",
       "asks for details needed to finalize (quantity/address)"
     ],
-    "generated_reply": "Hi Jordan,\n\nGreat question! For orders of 5+ units of the TrailBlaze Backpack 40L, we can offer a 10% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nCasey",
+    "generated_reply": "Hi Ines,\n\nGreat question! For orders of 20+ units of the TrailBlaze Backpack 40L, we can offer a 20% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nCasey",
     "retrieved_examples": [
       {
         "id": "em_0088",
@@ -370,15 +408,1463 @@
     "historical_reply": "Hi Ines,\n\nGreat question! For orders of 20+ units of the TrailBlaze Backpack 40L, we can offer a 20% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nJamie",
     "evaluation": {
       "scores": {
-        "coverage": 0.0,
-        "relevance": 1.2,
-        "tone": 3.5,
-        "completeness": 1.0,
-        "overall_score": 20.5
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
       },
-      "element_coverage": {},
-      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
-      "diagnostic_lexical_similarity_to_historical_reply": 0.733
+      "element_coverage": {
+        "addresses bulk discount for 20 units": true,
+        "gives a concrete discount or next step": true,
+        "asks for details needed to finalize (quantity/address)": true
+      },
+      "rationale": "The reply directly answers the customer's question about a bulk discount for 20 units, provides a concrete discount percentage, and clearly outlines the next steps needed to finalize the quote. The tone is professional and helpful.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.936
+    }
+  },
+  {
+    "id": "em_0136",
+    "category": "password_reset",
+    "incoming_email": "Hi, I'm locked out of my account and the reset email never arrives. Can you help? Sofia",
+    "required_elements": [
+      "acknowledges the login issue",
+      "takes or describes a concrete action",
+      "gives a fallback if the first step fails"
+    ],
+    "generated_reply": "Hi Sofia,\n\nSorry for the trouble! I've manually triggered a password reset email to the address on file -- please check spam/promotions too. If it still doesn't arrive in 10 minutes, reply here and I'll reset it from our side directly.\n\nBest,\nJamie",
+    "retrieved_examples": [
+      {
+        "id": "em_0086",
+        "similarity": 1.0
+      },
+      {
+        "id": "em_0186",
+        "similarity": 0.822
+      },
+      {
+        "id": "em_0206",
+        "similarity": 0.822
+      }
+    ],
+    "historical_reply": "Hi Sofia,\n\nSorry for the trouble! I've manually triggered a password reset email to the address on file -- please check spam/promotions too. If it still doesn't arrive in 10 minutes, reply here and I'll reset it from our side directly.\n\nBest,\nJamie",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "acknowledges the login issue": true,
+        "takes or describes a concrete action": true,
+        "gives a fallback if the first step fails": true
+      },
+      "rationale": "",
+      "diagnostic_lexical_similarity_to_historical_reply": 1.0
+    }
+  },
+  {
+    "id": "em_0025",
+    "category": "billing_dispute",
+    "incoming_email": "Hello, I see a charge of $49.0 from you that I don't recognize. Can you explain what this is for? Aisha",
+    "required_elements": [
+      "mentions the amount $49.0",
+      "explains or investigates the charge",
+      "offers next step if customer disagrees"
+    ],
+    "generated_reply": "Hi Aisha,\n\nThanks for flagging this. I looked into the $49.0 charge and it matches [order/renewal] on your account -- I've attached the invoice for reference. If this still doesn't look right to you, let me know and I'll open a dispute review right away.\n\nBest,\n[Agent Name]",
+    "retrieved_examples": [
+      {
+        "id": "em_0015",
+        "similarity": 1.0
+      },
+      {
+        "id": "em_0065",
+        "similarity": 0.85
+      },
+      {
+        "id": "em_0115",
+        "similarity": 0.847
+      }
+    ],
+    "historical_reply": "Hi Aisha,\n\nThanks for flagging this. I looked into the $49.0 charge and it matches [order/renewal] on your account -- I've attached the invoice for reference. If this still doesn't look right to you, let me know and I'll open a dispute review right away.\n\nBest,\nTaylor",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "mentions the amount $49.0": true,
+        "explains or investigates the charge": true,
+        "offers next step if customer disagrees": true
+      },
+      "rationale": "The reply directly addresses the customer's query about the unrecognized charge. It confirms the amount, provides an explanation, and offers a clear next step if the customer is still not satisfied. The tone is professional and helpful.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.936
+    }
+  },
+  {
+    "id": "em_0184",
+    "category": "cancel_subscription",
+    "incoming_email": "Hi, please cancel my Premium subscription. I don't want to be charged again. Fatima",
+    "required_elements": [
+      "confirms the subscription was canceled",
+      "confirms no future charges",
+      "mentions access until end of current period"
+    ],
+    "generated_reply": "Hi Fatima,\n\nI've gone ahead and canceled your Premium subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\nCasey",
+    "retrieved_examples": [
+      {
+        "id": "em_0194",
+        "similarity": 0.936
+      },
+      {
+        "id": "em_0134",
+        "similarity": 0.935
+      },
+      {
+        "id": "em_0214",
+        "similarity": 0.933
+      }
+    ],
+    "historical_reply": "Hi Fatima,\n\nI've gone ahead and canceled your Premium subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\nCasey",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "confirms the subscription was canceled": true,
+        "confirms no future charges": true,
+        "mentions access until end of current period": true
+      },
+      "rationale": "The reply directly addresses the customer's request to cancel the subscription. It confirms the cancellation, assures no future charges, and clarifies access until the end of the current billing period. The tone is professional and helpful.",
+      "diagnostic_lexical_similarity_to_historical_reply": 1.0
+    }
+  },
+  {
+    "id": "em_0056",
+    "category": "password_reset",
+    "incoming_email": "Hi, I'm locked out of my account and the reset email never arrives. Can you help? Maria",
+    "required_elements": [
+      "acknowledges the login issue",
+      "takes or describes a concrete action",
+      "gives a fallback if the first step fails"
+    ],
+    "generated_reply": "Hi Maria,\n\nSorry for the trouble! I've manually triggered a password reset email to the address on file \u2014 please check spam/promotions too. If it still doesn't arrive in 10 minutes, reply here and I'll reset it from our side directly.\n\nBest,\n[Agent Name]",
+    "retrieved_examples": [
+      {
+        "id": "em_0186",
+        "similarity": 0.865
+      },
+      {
+        "id": "em_0076",
+        "similarity": 0.865
+      },
+      {
+        "id": "em_0206",
+        "similarity": 0.865
+      }
+    ],
+    "historical_reply": "Hi Maria,\n\nSorry for the trouble! I've manually triggered a password reset email to the address on file -- please check spam/promotions too. If it still doesn't arrive in 10 minutes, reply here and I'll reset it from our side directly.\n\nBest,\nMorgan",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "acknowledges the login issue": true,
+        "takes or describes a concrete action": true,
+        "gives a fallback if the first step fails": true
+      },
+      "rationale": "",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.929
+    }
+  },
+  {
+    "id": "em_0024",
+    "category": "cancel_subscription",
+    "incoming_email": "Hi, please cancel my Annual subscription. I don't want to be charged again. Nia...",
+    "required_elements": [
+      "confirms the subscription was canceled",
+      "confirms no future charges",
+      "mentions access until end of current period"
+    ],
+    "generated_reply": "Hi Nia,\n\nI've gone ahead and canceled your Annual subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\nMorgan",
+    "retrieved_examples": [
+      {
+        "id": "em_0164",
+        "similarity": 1.0
+      },
+      {
+        "id": "em_0054",
+        "similarity": 0.895
+      },
+      {
+        "id": "em_0074",
+        "similarity": 0.895
+      }
+    ],
+    "historical_reply": "Hi Nia,\n\nI've gone ahead and canceled your Annual subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\nCasey",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "confirms the subscription was canceled": true,
+        "confirms no future charges": true,
+        "mentions access until end of current period": true
+      },
+      "rationale": "The reply directly addresses the customer's request to cancel their subscription. It confirms the cancellation, assures no future charges, and clarifies access until the end of the current billing period. The tone is professional and helpful.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.924
+    }
+  },
+  {
+    "id": "em_0092",
+    "category": "defective_product",
+    "incoming_email": "Hi team, the CloudNine Pillow I got (order #847659) stopped turning on after two days. This is disappointing given the price. What can you do? Maria",
+    "required_elements": [
+      "references order number #847659",
+      "apologizes for the defect",
+      "offers a concrete remedy (replacement or refund)",
+      "asks the customer to confirm a choice"
+    ],
+    "generated_reply": "Hi Maria,\n\nI'm really sorry about that experience with your CloudNine Pillow -- that's not the quality we aim for. I can send a free replacement right away, or process a full refund for order #847659, whichever you'd prefer. Just reply and let me know which you'd like.\n\nApologies again,\n[Agent Name]",
+    "retrieved_examples": [
+      {
+        "id": "em_0002",
+        "similarity": 0.867
+      },
+      {
+        "id": "em_0112",
+        "similarity": 0.653
+      },
+      {
+        "id": "em_0082",
+        "similarity": 0.651
+      }
+    ],
+    "historical_reply": "Hi Maria,\n\nI'm really sorry about that experience with your CloudNine Pillow -- that's not the quality we aim for. I can send a free replacement right away, or process a full refund for order #847659, whichever you'd prefer. Just reply and let me know which you'd like.\n\nApologies again,\nCasey",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "references order number #847659": true,
+        "apologizes for the defect": true,
+        "offers a concrete remedy (replacement or refund)": true,
+        "asks the customer to confirm a choice": true
+      },
+      "rationale": "The reply directly addresses the customer's issue with the pillow, offering a clear resolution. It maintains a professional and empathetic tone throughout, and covers all required elements effectively.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.929
+    }
+  },
+  {
+    "id": "em_0033",
+    "category": "address_change",
+    "incoming_email": "Hi, I just realized I gave the wrong address for order #287193. Can you update it before it ships? New address is 42 Birch Lane. Thanks, Sofia",
+    "required_elements": [
+      "references order number #287193",
+      "confirms whether the address was updated",
+      "mentions next shipping step"
+    ],
+    "generated_reply": "Hi Sofia,\n\nGood news -- order #287193 hasn't shipped yet, so I've updated the delivery address to 42 Birch Lane. You'll get a confirmation once it's on its way.\n\nBest,\n[Agent Name]",
+    "retrieved_examples": [
+      {
+        "id": "em_0153",
+        "similarity": 0.813
+      },
+      {
+        "id": "em_0123",
+        "similarity": 0.813
+      },
+      {
+        "id": "em_0213",
+        "similarity": 0.754
+      }
+    ],
+    "historical_reply": "Hi Sofia,\n\nGood news -- order #287193 hasn't shipped yet, so I've updated the delivery address to 42 Birch Lane. You'll get a confirmation once it's on its way.\n\nBest,\nJamie",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "references order number #287193": true,
+        "confirms whether the address was updated": true,
+        "mentions next shipping step": true
+      },
+      "rationale": "The reply directly addresses the customer's request to update the address for order #287193. It confirms the update and provides information about the next shipping step, maintaining a professional and helpful tone.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.906
+    }
+  },
+  {
+    "id": "em_0205",
+    "category": "billing_dispute",
+    "incoming_email": "Hello, I see a charge of $89.5 from you that I don't recognize. Can you explain what this is for? Priya",
+    "required_elements": [
+      "mentions the amount $89.5",
+      "explains or investigates the charge",
+      "offers next step if customer disagrees"
+    ],
+    "generated_reply": "Hi Priya,\n\nThanks for flagging this. I looked into the $89.5 charge and it matches [order/renewal] on your account -- I've attached the invoice for reference. If this still doesn't look right to you, let me know and I'll open a dispute review right away.\n\nBest,\n[Agent Name]",
+    "retrieved_examples": [
+      {
+        "id": "em_0195",
+        "similarity": 0.847
+      },
+      {
+        "id": "em_0185",
+        "similarity": 0.844
+      },
+      {
+        "id": "em_0125",
+        "similarity": 0.844
+      }
+    ],
+    "historical_reply": "Hi Priya,\n\nThanks for flagging this. I looked into the $89.5 charge and it matches [order/renewal] on your account -- I've attached the invoice for reference. If this still doesn't look right to you, let me know and I'll open a dispute review right away.\n\nBest,\nTaylor",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "mentions the amount $89.5": true,
+        "explains or investigates the charge": true,
+        "offers next step if customer disagrees": true
+      },
+      "rationale": "",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.936
+    }
+  },
+  {
+    "id": "em_0199",
+    "category": "scheduling",
+    "incoming_email": "Hi, could we set up a product demo sometime next Tuesday? Morning works best for me. Fatima",
+    "required_elements": [
+      "proposes a specific day/time near Tuesday morning",
+      "references a product demo",
+      "mentions sending a calendar invite/confirmation"
+    ],
+    "generated_reply": "Hi Fatima,\n\nNext Tuesday morning works well -- does 10:30 AM your time suit you for a product demo? I'll send a calendar invite with a video link as soon as you confirm.\n\nBest,\nJamie",
+    "retrieved_examples": [
+      {
+        "id": "em_0109",
+        "similarity": 0.889
+      },
+      {
+        "id": "em_0209",
+        "similarity": 0.888
+      },
+      {
+        "id": "em_0119",
+        "similarity": 0.887
+      }
+    ],
+    "historical_reply": "Hi Fatima,\n\nNext Tuesday morning works well -- does 10:00 AM your time suit you for a product demo? I'll send a calendar invite with a video link as soon as you confirm.\n\nBest,\nCasey",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "proposes a specific day/time near Tuesday morning": true,
+        "references a product demo": true,
+        "mentions sending a calendar invite/confirmation": true
+      },
+      "rationale": "The reply directly addresses the customer's request for a product demo next Tuesday morning by proposing a specific time. It also clearly states that a calendar invite will be sent upon confirmation, covering all required elements with a professional and courteous tone.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.835
+    }
+  },
+  {
+    "id": "em_0005",
+    "category": "billing_dispute",
+    "incoming_email": "Hello, I see a charge of $19.99 from you that I don't recognize. Can you explain what this is for? Kenji",
+    "required_elements": [
+      "mentions the amount $19.99",
+      "explains or investigates the charge",
+      "offers next step if customer disagrees"
+    ],
+    "generated_reply": "Hi Kenji,\n\nThanks for flagging this. I looked into the $19.99 charge and it matches [order/renewal] on your account -- I've attached the invoice for reference. If this still doesn't look right to you, let me know and I'll open a dispute review right away.\n\nBest,\n[Agent Name]",
+    "retrieved_examples": [
+      {
+        "id": "em_0045",
+        "similarity": 0.905
+      },
+      {
+        "id": "em_0175",
+        "similarity": 0.904
+      },
+      {
+        "id": "em_0145",
+        "similarity": 0.904
+      }
+    ],
+    "historical_reply": "Hi Kenji,\n\nThanks for flagging this. I looked into the $19.99 charge and it matches [order/renewal] on your account -- I've attached the invoice for reference. If this still doesn't look right to you, let me know and I'll open a dispute review right away.\n\nBest,\nMorgan",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "mentions the amount $19.99": true,
+        "explains or investigates the charge": true,
+        "offers next step if customer disagrees": true
+      },
+      "rationale": "",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.938
+    }
+  },
+  {
+    "id": "em_0101",
+    "category": "refund_request",
+    "incoming_email": "Hello, I'd like a refund for the CloudNine Pillow from order #574990 because it I no longer need it. How do I proceed? - Omar",
+    "required_elements": [
+      "references order number #574990",
+      "confirms the refund is being processed",
+      "gives a refund timeframe",
+      "mentions return/shipping instructions"
+    ],
+    "generated_reply": "Hi Omar,\n\nSorry to hear that! I've started a refund for order #574990; you should see the amount back on your original payment method within 5 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\n[Agent Name]",
+    "retrieved_examples": [
+      {
+        "id": "em_0061",
+        "similarity": 0.584
+      },
+      {
+        "id": "em_0001",
+        "similarity": 0.346
+      },
+      {
+        "id": "em_0031",
+        "similarity": 0.345
+      }
+    ],
+    "historical_reply": "Hi Omar,\n\nSorry to hear that! I've started a refund for order #574990; you should see the amount back on your original payment method within 10 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nRobin",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "references order number #574990": true,
+        "confirms the refund is being processed": true,
+        "gives a refund timeframe": true,
+        "mentions return/shipping instructions": true
+      },
+      "rationale": "The reply directly addresses the customer's request for a refund and provides all necessary information. The tone is professional and empathetic, and all required elements are covered clearly and concisely.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.908
+    }
+  },
+  {
+    "id": "em_0098",
+    "category": "sales_inquiry",
+    "incoming_email": "Hi, I'm considering ordering 20 units of the SonicWave Earbuds Pro for my team. Do you offer a bulk discount? Tariq",
+    "required_elements": [
+      "addresses bulk discount for 20 units",
+      "gives a concrete discount or next step",
+      "asks for details needed to finalize (quantity/address)"
+    ],
+    "generated_reply": "Hi Tariq,\n\nGreat question! For orders of 20+ units of the SonicWave Earbuds Pro, we can offer a 10% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nRobin",
+    "retrieved_examples": [
+      {
+        "id": "em_0168",
+        "similarity": 0.907
+      },
+      {
+        "id": "em_0038",
+        "similarity": 0.887
+      },
+      {
+        "id": "em_0182",
+        "similarity": 0.497
+      }
+    ],
+    "historical_reply": "Hi Tariq,\n\nGreat question! For orders of 20+ units of the SonicWave Earbuds Pro, we can offer a 10% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nTaylor",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "addresses bulk discount for 20 units": true,
+        "gives a concrete discount or next step": true,
+        "asks for details needed to finalize (quantity/address)": true
+      },
+      "rationale": "The reply directly addresses the bulk discount inquiry for 20 units, offering a concrete 10% discount. It also clearly outlines the next steps by asking for the exact quantity and shipping address to finalize a quote, making it a complete and relevant response.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.932
+    }
+  },
+  {
+    "id": "em_0171",
+    "category": "refund_request",
+    "incoming_email": "Hello, I'd like a refund for the PulseFit Smart Band from order #740097 because it I no longer need it. How do I proceed? - Noah",
+    "required_elements": [
+      "references order number #740097",
+      "confirms the refund is being processed",
+      "gives a refund timeframe",
+      "mentions return/shipping instructions"
+    ],
+    "generated_reply": "Hi Noah,\n\nSorry to hear that! I've started a refund for order #740097; you should see the amount back on your original payment method within 5 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nCasey",
+    "retrieved_examples": [
+      {
+        "id": "em_0181",
+        "similarity": 0.588
+      },
+      {
+        "id": "em_0051",
+        "similarity": 0.394
+      },
+      {
+        "id": "em_0192",
+        "similarity": 0.331
+      }
+    ],
+    "historical_reply": "Hi Noah,\n\nSorry to hear that! I've started a refund for order #740097; you should see the amount back on your original payment method within 7 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nCasey",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "references order number #740097": true,
+        "confirms the refund is being processed": true,
+        "gives a refund timeframe": true,
+        "mentions return/shipping instructions": true
+      },
+      "rationale": "The reply directly addresses Noah's request for a refund, confirming the order number and processing of the refund. It provides a clear timeframe and instructions for returning the item, satisfying all required elements with a professional and empathetic tone.",
+      "diagnostic_lexical_similarity_to_historical_reply": 1.0
+    }
+  },
+  {
+    "id": "em_0141",
+    "category": "refund_request",
+    "incoming_email": "Hello, I'd like a refund for the CloudNine Pillow from order #346943 because it wasn't what I expected. How do I proceed? - Noah",
+    "required_elements": [
+      "references order number #346943",
+      "confirms the refund is being processed",
+      "gives a refund timeframe",
+      "mentions return/shipping instructions"
+    ],
+    "generated_reply": "Hi Noah,\n\nSorry to hear that! I've started a refund for order #346943; you should see the amount back on your original payment method within 5 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nCasey",
+    "retrieved_examples": [
+      {
+        "id": "em_0061",
+        "similarity": 0.576
+      },
+      {
+        "id": "em_0051",
+        "similarity": 0.425
+      },
+      {
+        "id": "em_0001",
+        "similarity": 0.342
+      }
+    ],
+    "historical_reply": "Hi Noah,\n\nSorry to hear that! I've started a refund for order #346943; you should see the amount back on your original payment method within 7 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nRobin",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "references order number #346943": true,
+        "confirms the refund is being processed": true,
+        "gives a refund timeframe": true,
+        "mentions return/shipping instructions": true
+      },
+      "rationale": "The reply directly addresses Noah's request for a refund, confirming it's processed and providing a timeframe. It also clearly outlines the return instructions, satisfying all required elements with a professional and empathetic tone.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.936
+    }
+  },
+  {
+    "id": "em_0124",
+    "category": "cancel_subscription",
+    "incoming_email": "Hi, please cancel my Annual subscription. I don't want to be charged again. Maria",
+    "required_elements": [
+      "confirms the subscription was canceled",
+      "confirms no future charges",
+      "mentions access until end of current period"
+    ],
+    "generated_reply": "Hi Maria,\n\nI've gone ahead and canceled your Annual subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\nTaylor",
+    "retrieved_examples": [
+      {
+        "id": "em_0014",
+        "similarity": 1.0
+      },
+      {
+        "id": "em_0174",
+        "similarity": 1.0
+      },
+      {
+        "id": "em_0074",
+        "similarity": 0.893
+      }
+    ],
+    "historical_reply": "Hi Maria,\n\nI've gone ahead and canceled your Annual subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\nJamie",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "confirms the subscription was canceled": true,
+        "confirms no future charges": true,
+        "mentions access until end of current period": true
+      },
+      "rationale": "The reply directly addresses the customer's request to cancel their subscription and confirms all necessary details. The tone is professional and helpful, and all required elements are explicitly covered.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.924
+    }
+  },
+  {
+    "id": "em_0152",
+    "category": "defective_product",
+    "incoming_email": "Hi team, the PulseFit Smart Band I got (order #534194) the battery won't hold a charge. This is disappointing given the price. What can you do? Ines",
+    "required_elements": [
+      "references order number #534194",
+      "apologizes for the defect",
+      "offers a concrete remedy (replacement or refund)",
+      "asks the customer to confirm a choice"
+    ],
+    "generated_reply": "Hi Ines,\n\nI'm really sorry about that experience with your PulseFit Smart Band -- that's not the quality we aim for. I can send a free replacement right away, or process a full refund for order #534194, whichever you'd prefer. Just reply and let me know which you'd like.\n\nApologies again,\nCasey",
+    "retrieved_examples": [
+      {
+        "id": "em_0052",
+        "similarity": 0.89
+      },
+      {
+        "id": "em_0192",
+        "similarity": 0.679
+      },
+      {
+        "id": "em_0122",
+        "similarity": 0.669
+      }
+    ],
+    "historical_reply": "Hi Ines,\n\nI'm really sorry about that experience with your PulseFit Smart Band -- that's not the quality we aim for. I can send a free replacement right away, or process a full refund for order #534194, whichever you'd prefer. Just reply and let me know which you'd like.\n\nApologies again,\nCasey",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "references order number #534194": true,
+        "apologizes for the defect": true,
+        "offers a concrete remedy (replacement or refund)": true,
+        "asks the customer to confirm a choice": true
+      },
+      "rationale": "The reply directly addresses the customer's issue with the PulseFit Smart Band and order number. It offers a clear resolution (replacement or refund) and asks the customer to make a choice, while maintaining a professional and empathetic tone.",
+      "diagnostic_lexical_similarity_to_historical_reply": 1.0
+    }
+  },
+  {
+    "id": "em_0113",
+    "category": "address_change",
+    "incoming_email": "Hi, I just realized I gave the wrong address for order #583069. Can you update it before it ships? New address is 42 Birch Lane. Thanks, Lucas",
+    "required_elements": [
+      "references order number #583069",
+      "confirms whether the address was updated",
+      "mentions next shipping step"
+    ],
+    "generated_reply": "Hi Lucas,\n\nI just checked and order #583069 has unfortunately already shipped, so I'm not able to change the address on it directly. What I can do is contact the courier to request a redirect to 42 Birch Lane, or arrange a reship once it's returned to us. Let me know which you'd prefer.\n\nBest,\nTaylor",
+    "retrieved_examples": [
+      {
+        "id": "em_0213",
+        "similarity": 0.745
+      },
+      {
+        "id": "em_0043",
+        "similarity": 0.745
+      },
+      {
+        "id": "em_0073",
+        "similarity": 0.745
+      }
+    ],
+    "historical_reply": "Hi Lucas,\n\nGood news -- order #583069 hasn't shipped yet, so I've updated the delivery address to 42 Birch Lane. You'll get a confirmation once it's on its way.\n\nBest,\nRobin",
+    "evaluation": {
+      "scores": {
+        "coverage": 1.67,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 3.0,
+        "overall_score": 65.3
+      },
+      "element_coverage": {
+        "references order number #583069": true,
+        "confirms whether the address was updated": false,
+        "mentions next shipping step": false
+      },
+      "rationale": "The reply directly addresses the customer's request and maintains a professional tone. However, it doesn't confirm if the address was updated (because it wasn't) and doesn't explicitly mention the next shipping step, instead offering options for resolution.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.278
+    }
+  },
+  {
+    "id": "em_0133",
+    "category": "address_change",
+    "incoming_email": "Hi, I just realized I gave the wrong address for order #617444. Can you update it before it ships? New address is 42 Birch Lane. Thanks, Sam",
+    "required_elements": [
+      "references order number #617444",
+      "confirms whether the address was updated",
+      "mentions next shipping step"
+    ],
+    "generated_reply": "Hi Sam,\n\nI just checked and order #617444 has unfortunately already shipped, so I'm not able to change the address on it directly. What I can do is contact the courier to request a redirect to 42 Birch Lane, or arrange a reship once it's returned to us. Let me know which you'd prefer.\n\nBest,\n[Agent Name]",
+    "retrieved_examples": [
+      {
+        "id": "em_0213",
+        "similarity": 0.749
+      },
+      {
+        "id": "em_0043",
+        "similarity": 0.749
+      },
+      {
+        "id": "em_0073",
+        "similarity": 0.749
+      }
+    ],
+    "historical_reply": "Hi Sam,\n\nGood news -- order #617444 hasn't shipped yet, so I've updated the delivery address to 42 Birch Lane. You'll get a confirmation once it's on its way.\n\nBest,\nJamie",
+    "evaluation": {
+      "scores": {
+        "coverage": 3.33,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 3.0,
+        "overall_score": 78.7
+      },
+      "element_coverage": {
+        "references order number #617444": true,
+        "confirms whether the address was updated": false,
+        "mentions next shipping step": true
+      },
+      "rationale": "The reply directly addresses the customer's request and offers clear next steps. However, it does not explicitly confirm whether the address was updated, as it states it cannot be changed directly.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.278
+    }
+  },
+  {
+    "id": "em_0137",
+    "category": "feature_feedback",
+    "incoming_email": "Hey, I love the GlideStep Running Shoes but it would be great if you added a size chart on the product page. Any plans for that? Priya",
+    "required_elements": [
+      "thanks the customer for feedback",
+      "confirms the suggestion was logged/passed on",
+      "sets honest expectations on timeline"
+    ],
+    "generated_reply": "Hi Priya,\n\nThanks so much for the suggestion -- a size chart on the product page comes up a lot and I've passed it straight to our product team as feedback. I can't promise a timeline, but we do prioritize requests we hear often, so this genuinely helps.\n\nThanks again,\nCasey",
+    "retrieved_examples": [
+      {
+        "id": "em_0027",
+        "similarity": 0.809
+      },
+      {
+        "id": "em_0117",
+        "similarity": 0.799
+      },
+      {
+        "id": "em_0157",
+        "similarity": 0.794
+      }
+    ],
+    "historical_reply": "Hi Priya,\n\nThanks so much for the suggestion -- a size chart on the product page comes up a lot and I've passed it straight to our product team as feedback. I can't promise a timeline, but we do prioritize requests we hear often, so this genuinely helps.\n\nThanks again,\nJamie",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "thanks the customer for feedback": true,
+        "confirms the suggestion was logged/passed on": true,
+        "sets honest expectations on timeline": true
+      },
+      "rationale": "The reply directly addresses Priya's suggestion and thanks her for the feedback. It confirms the suggestion was passed to the product team and sets honest expectations about the timeline, while also explaining how her feedback is valuable.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.934
+    }
+  },
+  {
+    "id": "em_0064",
+    "category": "cancel_subscription",
+    "incoming_email": "Hi, please cancel my Annual subscription. I don't want to be charged again. Maria",
+    "required_elements": [
+      "confirms the subscription was canceled",
+      "confirms no future charges",
+      "mentions access until end of current period"
+    ],
+    "generated_reply": "Hi Maria,\n\nI've gone ahead and canceled your Annual subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\n[Agent Name]",
+    "retrieved_examples": [
+      {
+        "id": "em_0014",
+        "similarity": 1.0
+      },
+      {
+        "id": "em_0174",
+        "similarity": 1.0
+      },
+      {
+        "id": "em_0074",
+        "similarity": 0.893
+      }
+    ],
+    "historical_reply": "Hi Maria,\n\nI've gone ahead and canceled your Annual subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\nCasey",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "confirms the subscription was canceled": true,
+        "confirms no future charges": true,
+        "mentions access until end of current period": true
+      },
+      "rationale": "",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.924
+    }
+  },
+  {
+    "id": "em_0017",
+    "category": "feature_feedback",
+    "incoming_email": "Hey, I love the SonicWave Earbuds Pro but it would be great if you added bulk export. Any plans for that? Fatima",
+    "required_elements": [
+      "thanks the customer for feedback",
+      "confirms the suggestion was logged/passed on",
+      "sets honest expectations on timeline"
+    ],
+    "generated_reply": "Hi Fatima,\n\nThanks so much for the suggestion -- bulk export comes up a lot and I've passed it straight to our product team as feedback. I can't promise a timeline, but we do prioritize requests we hear often, so this genuinely helps.\n\nThanks again,\nJamie",
+    "retrieved_examples": [
+      {
+        "id": "em_0037",
+        "similarity": 0.763
+      },
+      {
+        "id": "em_0007",
+        "similarity": 0.699
+      },
+      {
+        "id": "em_0107",
+        "similarity": 0.677
+      }
+    ],
+    "historical_reply": "Hi Fatima,\n\nThanks so much for the suggestion -- bulk export comes up a lot and I've passed it straight to our product team as feedback. I can't promise a timeline, but we do prioritize requests we hear often, so this genuinely helps.\n\nThanks again,\nMorgan",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "thanks the customer for feedback": true,
+        "confirms the suggestion was logged/passed on": true,
+        "sets honest expectations on timeline": true
+      },
+      "rationale": "The reply directly addresses Fatima's suggestion for bulk export, expressing gratitude and confirming it has been passed to the product team. It sets honest expectations about the timeline while still being encouraging, fulfilling all required elements with a professional and empathetic tone.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.924
+    }
+  },
+  {
+    "id": "em_0003",
+    "category": "address_change",
+    "incoming_email": "Hi, I just realized I gave the wrong address for order #239643. Can you update it before it ships? New address is 42 Birch Lane. Thanks, Priya...",
+    "required_elements": [
+      "references order number #239643",
+      "confirms whether the address was updated",
+      "mentions next shipping step"
+    ],
+    "generated_reply": "Hi Priya,\n\nGood news -- order #239643 hasn't shipped yet, so I've updated the delivery address to 42 Birch Lane. You'll get a confirmation once it's on its way.\n\nBest,\n[Agent Name]",
+    "retrieved_examples": [
+      {
+        "id": "em_0143",
+        "similarity": 0.816
+      },
+      {
+        "id": "em_0043",
+        "similarity": 0.746
+      },
+      {
+        "id": "em_0213",
+        "similarity": 0.746
+      }
+    ],
+    "historical_reply": "Hi Priya,\n\nGood news -- order #239643 hasn't shipped yet, so I've updated the delivery address to 42 Birch Lane. You'll get a confirmation once it's on its way.\n\nBest,\nJamie",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "references order number #239643": true,
+        "confirms whether the address was updated": true,
+        "mentions next shipping step": true
+      },
+      "rationale": "The reply directly addresses the customer's request to update the address for order #239643. It confirms the update and provides information about the next shipping step, maintaining a professional and helpful tone.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.906
+    }
+  },
+  {
+    "id": "em_0089",
+    "category": "scheduling",
+    "incoming_email": "Hi, could we set up a renewal discussion sometime next Thursday? Morning works best for me. Tariq...",
+    "required_elements": [
+      "proposes a specific day/time near Thursday morning",
+      "references a renewal discussion",
+      "mentions sending a calendar invite/confirmation"
+    ],
+    "generated_reply": "Hi Tariq,\n\nNext Thursday morning works well -- does 10:00 AM your time suit you for a renewal discussion? I'll send a calendar invite with a video link as soon as you confirm.\n\nBest,\nJamie",
+    "retrieved_examples": [
+      {
+        "id": "em_0189",
+        "similarity": 0.946
+      },
+      {
+        "id": "em_0159",
+        "similarity": 0.943
+      },
+      {
+        "id": "em_0169",
+        "similarity": 0.814
+      }
+    ],
+    "historical_reply": "Hi Tariq,\n\nNext Thursday morning works well -- does 10:00 AM your time suit you for a renewal discussion? I'll send a calendar invite with a video link as soon as you confirm.\n\nBest,\nCasey",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "proposes a specific day/time near Thursday morning": true,
+        "references a renewal discussion": true,
+        "mentions sending a calendar invite/confirmation": true
+      },
+      "rationale": "The reply directly addresses the customer's request for a renewal discussion next Thursday morning by proposing a specific time. It also clearly states that a calendar invite will be sent upon confirmation, covering all required elements effectively and professionally.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.914
+    }
+  },
+  {
+    "id": "em_0127",
+    "category": "feature_feedback",
+    "incoming_email": "Hey, I love the Aurora Desk Lamp but it would be great if you added faster checkout. Any plans for that? Sam",
+    "required_elements": [
+      "thanks the customer for feedback",
+      "confirms the suggestion was logged/passed on",
+      "sets honest expectations on timeline"
+    ],
+    "generated_reply": "Hi Sam,\n\nThanks so much for the suggestion -- faster checkout comes up a lot and I've passed it straight to our product team as feedback. I can't promise a timeline, but we do prioritize requests we hear often, so this genuinely helps.\n\nThanks again,\nJamie",
+    "retrieved_examples": [
+      {
+        "id": "em_0177",
+        "similarity": 0.764
+      },
+      {
+        "id": "em_0087",
+        "similarity": 0.763
+      },
+      {
+        "id": "em_0067",
+        "similarity": 0.421
+      }
+    ],
+    "historical_reply": "Hi Sam,\n\nThanks so much for the suggestion -- faster checkout comes up a lot and I've passed it straight to our product team as feedback. I can't promise a timeline, but we do prioritize requests we hear often, so this genuinely helps.\n\nThanks again,\nMorgan",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "thanks the customer for feedback": true,
+        "confirms the suggestion was logged/passed on": true,
+        "sets honest expectations on timeline": true
+      },
+      "rationale": "The reply directly addresses the customer's feedback about faster checkout. It thanks the customer, confirms the suggestion was passed to the product team, and sets honest expectations about the timeline while still being encouraging.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.924
+    }
+  },
+  {
+    "id": "em_0197",
+    "category": "feature_feedback",
+    "incoming_email": "Hey, I love the GlideStep Running Shoes but it would be great if you added a dark mode. Any plans for that? Omar",
+    "required_elements": [
+      "thanks the customer for feedback",
+      "confirms the suggestion was logged/passed on",
+      "sets honest expectations on timeline"
+    ],
+    "generated_reply": "Hi Omar,\n\nThanks so much for the suggestion -- a dark mode comes up a lot and I've passed it straight to our product team as feedback. I can't promise a timeline, but we do prioritize requests we hear often, so this genuinely helps.\n\nThanks again,\nJamie",
+    "retrieved_examples": [
+      {
+        "id": "em_0187",
+        "similarity": 0.93
+      },
+      {
+        "id": "em_0077",
+        "similarity": 0.725
+      },
+      {
+        "id": "em_0097",
+        "similarity": 0.724
+      }
+    ],
+    "historical_reply": "Hi Omar,\n\nThanks so much for the suggestion -- a dark mode comes up a lot and I've passed it straight to our product team as feedback. I can't promise a timeline, but we do prioritize requests we hear often, so this genuinely helps.\n\nThanks again,\nRobin",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "thanks the customer for feedback": true,
+        "confirms the suggestion was logged/passed on": true,
+        "sets honest expectations on timeline": true
+      },
+      "rationale": "The reply directly addresses Omar's suggestion for dark mode, expressing gratitude and confirming the feedback was passed to the product team. It also sets honest expectations about the timeline while still being encouraging.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.924
+    }
+  },
+  {
+    "id": "em_0091",
+    "category": "refund_request",
+    "incoming_email": "Hello, I'd like a refund for the PulseFit Smart Band from order #494375 because it I no longer need it. How do I proceed? - Fatima",
+    "required_elements": [
+      "references order number #494375",
+      "confirms the refund is being processed",
+      "gives a refund timeframe",
+      "mentions return/shipping instructions"
+    ],
+    "generated_reply": "Hi Fatima,\n\nSorry to hear that! I've started a refund for order #494375; you should see the amount back on your original payment method within 10 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nMorgan",
+    "retrieved_examples": [
+      {
+        "id": "em_0181",
+        "similarity": 0.614
+      },
+      {
+        "id": "em_0192",
+        "similarity": 0.345
+      },
+      {
+        "id": "em_0122",
+        "similarity": 0.34
+      }
+    ],
+    "historical_reply": "Hi Fatima,\n\nSorry to hear that! I've started a refund for order #494375; you should see the amount back on your original payment method within 7 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nCasey",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "references order number #494375": true,
+        "confirms the refund is being processed": true,
+        "gives a refund timeframe": true,
+        "mentions return/shipping instructions": true
+      },
+      "rationale": "The reply directly addresses the customer's request for a refund, confirming it's in process and providing all necessary details. The tone is professional and empathetic, and all required elements are covered clearly and concisely.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.908
+    }
+  },
+  {
+    "id": "em_0018",
+    "category": "sales_inquiry",
+    "incoming_email": "Hi, I'm considering ordering 10 units of the IronGrip Yoga Mat for my team. Do you offer a bulk discount? Ines",
+    "required_elements": [
+      "addresses bulk discount for 10 units",
+      "gives a concrete discount or next step",
+      "asks for details needed to finalize (quantity/address)"
+    ],
+    "generated_reply": "Hi Ines,\n\nGreat question! For orders of 10+ units of the IronGrip Yoga Mat, we can offer a 10% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\n[Agent Name]",
+    "retrieved_examples": [
+      {
+        "id": "em_0198",
+        "similarity": 0.939
+      },
+      {
+        "id": "em_0218",
+        "similarity": 0.931
+      },
+      {
+        "id": "em_0148",
+        "similarity": 0.867
+      }
+    ],
+    "historical_reply": "Hi Ines,\n\nGreat question! For orders of 10+ units of the IronGrip Yoga Mat, we can offer a 20% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nCasey",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "addresses bulk discount for 10 units": true,
+        "gives a concrete discount or next step": true,
+        "asks for details needed to finalize (quantity/address)": true
+      },
+      "rationale": "The reply directly addresses the customer's question about a bulk discount for 10 units of the IronGrip Yoga Mat. It provides a concrete 10% discount and clearly outlines the next steps, asking for the exact quantity and shipping address to finalize a quote. The tone is professional and helpful.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.886
+    }
+  },
+  {
+    "id": "em_0121",
+    "category": "refund_request",
+    "incoming_email": "Hello, I'd like a refund for the CloudNine Pillow from order #124776 because it wasn't what I expected. How do I proceed? - Maria",
+    "required_elements": [
+      "references order number #124776",
+      "confirms the refund is being processed",
+      "gives a refund timeframe",
+      "mentions return/shipping instructions"
+    ],
+    "generated_reply": "Hi Maria,\n\nSorry to hear that! I've started a refund for order #124776; you should see the amount back on your original payment method within 5 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\n[Agent Name]",
+    "retrieved_examples": [
+      {
+        "id": "em_0061",
+        "similarity": 0.601
+      },
+      {
+        "id": "em_0001",
+        "similarity": 0.356
+      },
+      {
+        "id": "em_0031",
+        "similarity": 0.355
+      }
+    ],
+    "historical_reply": "Hi Maria,\n\nSorry to hear that! I've started a refund for order #124776; you should see the amount back on your original payment method within 7 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nRobin",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "references order number #124776": true,
+        "confirms the refund is being processed": true,
+        "gives a refund timeframe": true,
+        "mentions return/shipping instructions": true
+      },
+      "rationale": "The reply directly addresses the customer's request for a refund and provides all the necessary information. The tone is professional and empathetic, and all required elements are covered clearly and concisely.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.936
+    }
+  },
+  {
+    "id": "em_0193",
+    "category": "address_change",
+    "incoming_email": "Hi, I just realized I gave the wrong address for order #926749. Can you update it before it ships? New address is 42 Birch Lane. Thanks, Sam",
+    "required_elements": [
+      "references order number #926749",
+      "confirms whether the address was updated",
+      "mentions next shipping step"
+    ],
+    "generated_reply": "Hi Sam,\n\nI just checked and order #926749 has unfortunately already shipped, so I'm not able to change the address on it directly. What I can do is contact the courier to request a redirect to 42 Birch Lane, or arrange a reship once it's returned to us. Let me know which you'd prefer.\n\nBest,\n[Agent Name]",
+    "retrieved_examples": [
+      {
+        "id": "em_0213",
+        "similarity": 0.749
+      },
+      {
+        "id": "em_0043",
+        "similarity": 0.749
+      },
+      {
+        "id": "em_0073",
+        "similarity": 0.749
+      }
+    ],
+    "historical_reply": "Hi Sam,\n\nGood news -- order #926749 hasn't shipped yet, so I've updated the delivery address to 42 Birch Lane. You'll get a confirmation once it's on its way.\n\nBest,\nCasey",
+    "evaluation": {
+      "scores": {
+        "coverage": 3.33,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 3.0,
+        "overall_score": 78.7
+      },
+      "element_coverage": {
+        "references order number #926749": true,
+        "confirms whether the address was updated": false,
+        "mentions next shipping step": true
+      },
+      "rationale": "The reply directly addresses the customer's request and maintains a professional tone. However, it does not confirm if the address was updated, as it states the order has already shipped. It offers next steps but doesn't explicitly state the 'next shipping step' in the context of the original order's journey.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.278
+    }
+  },
+  {
+    "id": "em_0155",
+    "category": "billing_dispute",
+    "incoming_email": "Hello, I see a charge of $19.99 from you that I don't recognize. Can you explain what this is for? Liam...",
+    "required_elements": [
+      "mentions the amount $19.99",
+      "explains or investigates the charge",
+      "offers next step if customer disagrees"
+    ],
+    "generated_reply": "Hi Liam,\n\nThanks for flagging this. I looked into the $19.99 charge and it matches [order/renewal] on your account -- I've attached the invoice for reference. If this still doesn't look right to you, let me know and I'll open a dispute review right away.\n\nBest,\n[Agent Name]",
+    "retrieved_examples": [
+      {
+        "id": "em_0035",
+        "similarity": 1.0
+      },
+      {
+        "id": "em_0045",
+        "similarity": 0.855
+      },
+      {
+        "id": "em_0175",
+        "similarity": 0.854
+      }
+    ],
+    "historical_reply": "Hi Liam,\n\nThanks for flagging this. I looked into the $19.99 charge and it matches [order/renewal] on your account -- I've attached the invoice for reference. If this still doesn't look right to you, let me know and I'll open a dispute review right away.\n\nBest,\nMorgan",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "mentions the amount $19.99": true,
+        "explains or investigates the charge": true,
+        "offers next step if customer disagrees": true
+      },
+      "rationale": "The reply directly addresses the customer's query about the unrecognized charge. It clearly mentions the amount, explains the charge, and provides a clear next step if the customer is still not satisfied. The tone is professional and helpful.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.938
+    }
+  },
+  {
+    "id": "em_0053",
+    "category": "address_change",
+    "incoming_email": "Hi, I just realized I gave the wrong address for order #409806. Can you update it before it ships? New address is 42 Birch Lane. Thanks, Grace...",
+    "required_elements": [
+      "references order number #409806",
+      "confirms whether the address was updated",
+      "mentions next shipping step"
+    ],
+    "generated_reply": "Hi Grace,\n\nI just checked and order #409806 has unfortunately already shipped, so I'm not able to change the address on it directly. What I can do is contact the courier to request a redirect to 42 Birch Lane, or arrange a reship once it's returned to us. Let me know which you'd prefer.\n\nBest,\n[Agent Name]",
+    "retrieved_examples": [
+      {
+        "id": "em_0213",
+        "similarity": 0.812
+      },
+      {
+        "id": "em_0043",
+        "similarity": 0.812
+      },
+      {
+        "id": "em_0073",
+        "similarity": 0.812
+      }
+    ],
+    "historical_reply": "Hi Grace,\n\nGood news -- order #409806 hasn't shipped yet, so I've updated the delivery address to 42 Birch Lane. You'll get a confirmation once it's on its way.\n\nBest,\nRobin",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "references order number #409806": true,
+        "confirms whether the address was updated": true,
+        "mentions next shipping step": true
+      },
+      "rationale": "",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.278
+    }
+  },
+  {
+    "id": "em_0202",
+    "category": "defective_product",
+    "incoming_email": "Hi team, the CloudNine Pillow I got (order #217408) stopped turning on after two days. This is disappointing given the price. What can you do? Noah",
+    "required_elements": [
+      "references order number #217408",
+      "apologizes for the defect",
+      "offers a concrete remedy (replacement or refund)",
+      "asks the customer to confirm a choice"
+    ],
+    "generated_reply": "Hi Noah,\n\nI'm really sorry about that experience with your CloudNine Pillow -- that's not the quality we aim for. I can send a free replacement right away, or process a full refund for order #217408, whichever you'd prefer. Just reply and let me know which you'd like.\n\nApologies again,\n[Agent Name]",
+    "retrieved_examples": [
+      {
+        "id": "em_0002",
+        "similarity": 0.847
+      },
+      {
+        "id": "em_0112",
+        "similarity": 0.638
+      },
+      {
+        "id": "em_0082",
+        "similarity": 0.636
+      }
+    ],
+    "historical_reply": "Hi Noah,\n\nI'm really sorry about that experience with your CloudNine Pillow -- that's not the quality we aim for. I can send a free replacement right away, or process a full refund for order #217408, whichever you'd prefer. Just reply and let me know which you'd like.\n\nApologies again,\nJamie",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "references order number #217408": true,
+        "apologizes for the defect": true,
+        "offers a concrete remedy (replacement or refund)": true,
+        "asks the customer to confirm a choice": true
+      },
+      "rationale": "The reply directly addresses the customer's issue with the defective pillow and offers a clear resolution. It covers all required elements, including an apology, referencing the order number, providing concrete remedies, and asking for the customer's preference. The tone is professional and empathetic.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.929
+    }
+  },
+  {
+    "id": "em_0149",
+    "category": "scheduling",
+    "incoming_email": "Hi, could we set up a renewal discussion sometime next Wednesday? Morning works best for me. Emma",
+    "required_elements": [
+      "proposes a specific day/time near Wednesday morning",
+      "references a renewal discussion",
+      "mentions sending a calendar invite/confirmation"
+    ],
+    "generated_reply": "Hi Emma,\n\nNext Wednesday morning works well -- does 10:00 AM your time suit you for a renewal discussion? I'll send a calendar invite with a video link as soon as you confirm.\n\nBest,\nJamie",
+    "retrieved_examples": [
+      {
+        "id": "em_0169",
+        "similarity": 0.914
+      },
+      {
+        "id": "em_0219",
+        "similarity": 0.912
+      },
+      {
+        "id": "em_0159",
+        "similarity": 0.878
+      }
+    ],
+    "historical_reply": "Hi Emma,\n\nNext Wednesday morning works well -- does 10:00 AM your time suit you for a renewal discussion? I'll send a calendar invite with a video link as soon as you confirm.\n\nBest,\nRobin",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "proposes a specific day/time near Wednesday morning": true,
+        "references a renewal discussion": true,
+        "mentions sending a calendar invite/confirmation": true
+      },
+      "rationale": "The reply directly addresses the customer's request for a renewal discussion next Wednesday morning by proposing a specific time. It also clearly states that a calendar invite will be sent upon confirmation, covering all required elements professionally and completely.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.914
+    }
+  },
+  {
+    "id": "em_0100",
+    "category": "order_status",
+    "incoming_email": "Hi, I ordered the NovaCharge Power Bank on 2026-07-04 (order #684394) and it still says 'processing'. Can you tell me when it will ship? Thanks, Noah",
+    "required_elements": [
+      "references order number #684394",
+      "gives a concrete shipping timeframe",
+      "offers a next step if the timeline is missed"
+    ],
+    "generated_reply": "Hi Noah,\n\nThanks for reaching out! I checked order #684394 and it's on track to ship within 2 business day(s). You'll get a tracking email as soon as it leaves the warehouse. Let us know if you don't see it by then.\n\nBest,\n[Agent Name]",
+    "retrieved_examples": [
+      {
+        "id": "em_0150",
+        "similarity": 0.578
+      },
+      {
+        "id": "em_0090",
+        "similarity": 0.48
+      },
+      {
+        "id": "em_0210",
+        "similarity": 0.347
+      }
+    ],
+    "historical_reply": "Hi Noah,\n\nThanks for reaching out! I checked order #684394 and it's on track to ship within 3 business day(s). You'll get a tracking email as soon as it leaves the warehouse. Let us know if you don't see it by then.\n\nBest,\nRobin",
+    "evaluation": {
+      "scores": {
+        "coverage": 5.0,
+        "relevance": 5.0,
+        "tone": 5.0,
+        "completeness": 5.0,
+        "overall_score": 100.0
+      },
+      "element_coverage": {
+        "references order number #684394": true,
+        "gives a concrete shipping timeframe": true,
+        "offers a next step if the timeline is missed": true
+      },
+      "rationale": "The reply directly addresses the customer's inquiry about their order status and shipping. It provides a clear shipping timeframe and a next step if the customer doesn't receive the tracking information as expected. The tone is professional and helpful.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.914
     }
   }
 ]

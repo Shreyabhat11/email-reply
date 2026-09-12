@@ -1,15 +1,15 @@
 {
-  "n": 10,
-  "mean_coverage": 0.0,
-  "stdev_coverage": 0.0,
-  "mean_relevance": 1.19,
-  "stdev_relevance": 0.14,
-  "mean_tone": 3.5,
+  "n": 44,
+  "mean_coverage": 4.81,
+  "stdev_coverage": 0.64,
+  "mean_relevance": 5.0,
+  "stdev_relevance": 0.0,
+  "mean_tone": 5.0,
   "stdev_tone": 0.0,
-  "mean_completeness": 1.0,
-  "stdev_completeness": 0.0,
-  "mean_overall_score": 20.45,
-  "stdev_overall_score": 0.69,
-  "mean_diagnostic_lexical_similarity": 0.8,
-  "pass_rate_overall_ge_70": 0.0
+  "mean_completeness": 4.86,
+  "stdev_completeness": 0.5,
+  "mean_overall_score": 97.94,
+  "stdev_overall_score": 6.91,
+  "mean_diagnostic_lexical_similarity": 0.861,
+  "pass_rate_overall_ge_70": 0.977
 }

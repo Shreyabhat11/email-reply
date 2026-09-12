@@ -4,9 +4,9 @@ Run the full pipeline end-to-end: dataset -> RAG generation -> evaluation -> rep
 
 Usage:
     python scripts/run_demo.py --n 30
-    ANTHROPIC_API_KEY=sk-... python scripts/run_demo.py --n 30 --model claude-sonnet-4-6
+    GEMINI_API_KEY=sk-... python scripts/run_demo.py --n 30 --model gemini-2.5-flash
 
-Without ANTHROPIC_API_KEY set, this runs entirely offline using the mock LLM
+Without GEMINI_API_KEY set, this runs entirely offline using the mock LLM
 backend (see src/llm_client.py) -- useful to confirm the plumbing works, but
 NOT representative of real generation/evaluation quality. Set the key for
 real numbers.
@@ -27,7 +27,7 @@ def main():
     ap.add_argument("--out", default="reports")
     ap.add_argument("--k", type=int, default=3, help="number of few-shot retrieved examples")
     ap.add_argument("--test_frac", type=float, default=0.2)
-    ap.add_argument("--model", default="claude-sonnet-4-6")
+    ap.add_argument("--model", default="gemini-2.5-flash", help="LLM model to use for generation")
     ap.add_argument("--n", type=int, default=None, help="limit number of test emails (for quick runs)")
     args = ap.parse_args()
 

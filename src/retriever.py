@@ -11,7 +11,7 @@ similarity is a legitimate, fully offline, dependency-light retriever that
 works well in a narrow domain like support email (lots of shared vocabulary:
 "order", "refund", "subscription", etc.). The interface below is written so
 swapping in a real embedding model (e.g. `sentence-transformers` or the
-Anthropic/OpenAI embeddings API) later is a one-class change -- see
+Gemini/OpenAI embeddings API) later is a one-class change -- see
 `EmbeddingRetriever` stub at the bottom.
 """
 import json

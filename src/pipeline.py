@@ -28,7 +28,7 @@ def split(rows, test_frac=0.2, seed=13):
     return rows[n_test:], rows[:n_test]
 
 
-def run(data_path, out_dir="reports", k=3, test_frac=0.2, model="claude-sonnet-4-6", limit=None):
+def run(data_path, out_dir="reports", k=3, test_frac=0.2, model="gemini-2.5-flash", limit=None):
     os.makedirs(out_dir, exist_ok=True)
     all_rows = load_jsonl(data_path)
     train, test = split(all_rows, test_frac=test_frac)
