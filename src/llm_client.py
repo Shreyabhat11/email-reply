@@ -33,7 +33,7 @@ class GeminiBackend:
         self.client = genai.Client(api_key=api_key)
         self.model = model
 
-    def complete(self, system, prompt, max_tokens=600, temperature=0.4):
+    def complete(self, system, prompt, max_tokens=300, temperature=0.0):
         from google.genai import types
 
         response = self.client.models.generate_content(
@@ -43,6 +43,9 @@ class GeminiBackend:
                 system_instruction=system,
                 max_output_tokens=max_tokens,
                 temperature=temperature,
+                thinking_config=types.ThinkingConfig(
+                    thinking_budget=0
+                ),
             ),
         )
 
@@ -61,7 +64,7 @@ class MockBackend:
     API key. Real accuracy numbers should be produced with GeminiBackend.
     """
 
-    def complete(self, system, prompt, max_tokens=600, temperature=0.0):
+    def complete(self, system, prompt, max_tokens=300, temperature=0.0):
         if "### RUBRIC" in prompt:
             return self._mock_judge(prompt)
         return self._mock_generate(prompt)

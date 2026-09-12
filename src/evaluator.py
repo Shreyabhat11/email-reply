@@ -66,12 +66,40 @@ from sklearn.metrics.pairwise import cosine_similarity
 from src.llm_client import get_llm
 
 
-JUDGE_SYSTEM = (
-    "You are a strict and fair QA reviewer evaluating customer-support "
-    "email replies. Evaluate only the supplied incoming email, required "
-    "elements, and generated reply. Do not assume facts that are not present. "
-    "Return ONLY valid JSON. Do not use markdown fences or extra text."
-)
+JUDGE_SYSTEM = """
+You are a strict evaluator of customer-support email replies.
+
+Evaluate the candidate reply against the incoming email, required elements,
+and reference reply.
+
+Return ONLY valid JSON.
+Do not use markdown.
+Do not explain your answer.
+Do not add any text before or after the JSON.
+
+Use exactly this schema:
+
+{
+  "relevance": 1,
+  "completeness": 1,
+  "tone": 1,
+  "element_coverage": {
+    "required element": true
+  }
+}
+
+Scoring:
+- relevance: 1 = irrelevant, 3 = partially relevant, 5 = directly addresses the request
+- completeness: 1 = misses the main request, 3 = partially addresses it, 5 = fully addresses it
+- tone: 1 = inappropriate, 3 = acceptable, 5 = professional and empathetic
+
+For element_coverage:
+- Use exactly the required elements provided.
+- true only when the candidate actually satisfies that element.
+- false when it is missing, vague, or unsupported.
+
+Do not infer actions that the candidate does not explicitly communicate.
+"""
 
 
 JUDGE_PROMPT = """### RUBRIC
@@ -291,13 +319,9 @@ class ReplyEvaluator:
         raw = self.llm.complete(
             JUDGE_SYSTEM,
             prompt,
-            max_tokens=500,
+            max_tokens=300,
             temperature=0.0,
         )
-
-        print("\n--- RAW JUDGE RESPONSE ---")
-        print(raw)
-        print("--- END JUDGE RESPONSE ---\n")
 
         parsed = _parse_judge_json(raw)
 

@@ -1,78 +1,202 @@
 {
   "n": 12,
-  "pearson_r": NaN,
-  "spearman_rho": NaN,
+  "pearson_r": 0.987,
+  "spearman_rho": 0.992,
   "detail": [
     {
       "id": "g01",
       "human_rating_1_5": 5,
-      "auto_overall_score_0_100": 36.0,
+      "auto_overall_score_0_100": 100.0,
+      "coverage": 5.0,
+      "relevance": 5.0,
+      "completeness": 5.0,
+      "tone": 5.0,
+      "element_coverage": {
+        "references order number #482913": true,
+        "confirms the refund is being processed": true,
+        "gives a refund timeframe": true,
+        "mentions return/shipping instructions": true
+      },
+      "rationale": "The reply directly addresses the customer's request for a refund due to a damaged item. It confirms the refund, provides a timeframe, and explains the return process, all while maintaining a professional and empathetic tone.",
       "human_note": "Excellent: cites order number, timeframe, and return instructions."
     },
     {
       "id": "g02",
       "human_rating_1_5": 1,
-      "auto_overall_score_0_100": 36.0,
+      "auto_overall_score_0_100": 18.0,
+      "coverage": 0.0,
+      "relevance": 1.0,
+      "completeness": 1.0,
+      "tone": 3.0,
+      "element_coverage": {
+        "references order number #482913": false,
+        "confirms the refund is being processed": false,
+        "gives a refund timeframe": false,
+        "mentions return/shipping instructions": false
+      },
+      "rationale": "The reply is generic and does not address any of the customer's specific requests. It fails to mention the order number, refund, timeframe, or return instructions. The tone is polite but unhelpful.",
       "human_note": "Completely fails to address the refund request; pure filler."
     },
     {
       "id": "g03",
       "human_rating_1_5": 5,
-      "auto_overall_score_0_100": 36.0,
+      "auto_overall_score_0_100": 100.0,
+      "coverage": 5.0,
+      "relevance": 5.0,
+      "completeness": 5.0,
+      "tone": 5.0,
+      "element_coverage": {
+        "references order number #219044": true,
+        "gives a concrete shipping timeframe": true,
+        "offers a next step if the timeline is missed": true
+      },
+      "rationale": "The reply directly addresses the customer's inquiry about their order status and shipping. It provides a clear shipping timeframe and a specific next step if the customer doesn't receive a tracking email by the stated time. The tone is professional and helpful.",
       "human_note": "On point, specific, gives a fallback."
     },
     {
       "id": "g04",
       "human_rating_1_5": 2,
-      "auto_overall_score_0_100": 36.0,
+      "auto_overall_score_0_100": 52.3,
+      "coverage": 1.67,
+      "relevance": 3.0,
+      "completeness": 3.0,
+      "tone": 4.0,
+      "element_coverage": {
+        "references order number #219044": false,
+        "gives a concrete shipping timeframe": true,
+        "offers a next step if the timeline is missed": false
+      },
+      "rationale": "The reply is generally relevant but misses key details. It provides a shipping timeframe but doesn't reference the specific order number or offer a clear next step if the new timeline is missed. The tone is acceptable.",
       "human_note": "Doesn't cite the order number, vague timeframe, no concrete commitment."
     },
     {
       "id": "g05",
       "human_rating_1_5": 5,
-      "auto_overall_score_0_100": 36.0,
+      "auto_overall_score_0_100": 100.0,
+      "coverage": 5.0,
+      "relevance": 5.0,
+      "completeness": 5.0,
+      "tone": 5.0,
+      "element_coverage": {
+        "references order number #771205": true,
+        "apologizes for the defect": true,
+        "offers a concrete remedy (replacement or refund)": true,
+        "asks the customer to confirm a choice": true
+      },
+      "rationale": "The reply directly addresses the customer's issue with the earbuds and references the order number. It offers a clear choice between a replacement or a refund, and asks the customer to confirm their preference. The tone is professional and empathetic.",
       "human_note": "Apologizes, cites order, gives real options, asks for confirmation."
     },
     {
       "id": "g06",
       "human_rating_1_5": 2,
-      "auto_overall_score_0_100": 36.0,
+      "auto_overall_score_0_100": 28.0,
+      "coverage": 0.0,
+      "relevance": 3.0,
+      "completeness": 1.0,
+      "tone": 3.0,
+      "element_coverage": {
+        "references order number #771205": false,
+        "apologizes for the defect": false,
+        "offers a concrete remedy (replacement or refund)": false,
+        "asks the customer to confirm a choice": false
+      },
+      "rationale": "The reply is somewhat relevant by offering troubleshooting, but it doesn't address the core issue of a defective product or offer a resolution. It misses all required elements for a satisfactory customer support response to a defective item.",
       "human_note": "On-topic but dodges the actual ask (replacement/refund) and no order reference or apology; borderline unhelpful for a clearly dead unit."
     },
     {
       "id": "g07",
       "human_rating_1_5": 5,
-      "auto_overall_score_0_100": 36.0,
+      "auto_overall_score_0_100": 100.0,
+      "coverage": 5.0,
+      "relevance": 5.0,
+      "completeness": 5.0,
+      "tone": 5.0,
+      "element_coverage": {
+        "confirms the subscription was canceled": true,
+        "confirms no future charges": true,
+        "mentions access until end of current period": true
+      },
+      "rationale": "The reply directly addresses the customer's request to cancel their subscription. It confirms the cancellation, assures no future charges, and clarifies access until the end of the current billing period. The tone is professional and helpful.",
       "human_note": "Covers all three required points clearly and warmly."
     },
     {
       "id": "g08",
       "human_rating_1_5": 1,
-      "auto_overall_score_0_100": 36.0,
+      "auto_overall_score_0_100": 18.0,
+      "coverage": 0.0,
+      "relevance": 1.0,
+      "completeness": 1.0,
+      "tone": 3.0,
+      "element_coverage": {
+        "confirms the subscription was canceled": false,
+        "confirms no future charges": false,
+        "mentions access until end of current period": false
+      },
+      "rationale": "The reply does not address the customer's request to cancel the subscription. Instead, it attempts to upsell or cross-sell another plan, making it irrelevant to the customer's explicit request. None of the required elements are met.",
       "human_note": "Never actually confirms the cancellation was performed -- risks a real billing complaint later."
     },
     {
       "id": "g09",
       "human_rating_1_5": 5,
-      "auto_overall_score_0_100": 36.0,
+      "auto_overall_score_0_100": 100.0,
+      "coverage": 5.0,
+      "relevance": 5.0,
+      "completeness": 5.0,
+      "tone": 5.0,
+      "element_coverage": {
+        "addresses bulk discount for 10 units": true,
+        "gives a concrete discount or next step": true,
+        "asks for details needed to finalize (quantity/address)": true
+      },
+      "rationale": "The reply directly answers the customer's question about a bulk discount for 10 units, provides a concrete discount percentage, and clearly outlines the next step by asking for the shipping address to finalize a quote. The tone is professional and helpful.",
       "human_note": "Specific discount, quantity referenced, clear next step."
     },
     {
       "id": "g10",
       "human_rating_1_5": 1,
-      "auto_overall_score_0_100": 36.0,
+      "auto_overall_score_0_100": 18.0,
+      "coverage": 0.0,
+      "relevance": 1.0,
+      "completeness": 1.0,
+      "tone": 3.0,
+      "element_coverage": {
+        "addresses bulk discount for 10 units": false,
+        "gives a concrete discount or next step": false,
+        "asks for details needed to finalize (quantity/address)": false
+      },
+      "rationale": "The reply is largely irrelevant to the customer's query about a bulk discount. It does not address any of the required elements, failing to provide information about discounts or ask for necessary details.",
       "human_note": "Completely ignores the bulk-discount question."
     },
     {
       "id": "g11",
       "human_rating_1_5": 5,
-      "auto_overall_score_0_100": 36.0,
+      "auto_overall_score_0_100": 100.0,
+      "coverage": 5.0,
+      "relevance": 5.0,
+      "completeness": 5.0,
+      "tone": 5.0,
+      "element_coverage": {
+        "acknowledges the login issue": true,
+        "takes or describes a concrete action": true,
+        "gives a fallback if the first step fails": true
+      },
+      "rationale": "The reply directly addresses the customer's login issue, expresses empathy, and provides a clear solution with a fallback. It covers all required elements effectively and professionally.",
       "human_note": "Concrete action plus fallback, empathetic."
     },
     {
       "id": "g12",
       "human_rating_1_5": 2,
-      "auto_overall_score_0_100": 36.0,
+      "auto_overall_score_0_100": 49.3,
+      "coverage": 1.67,
+      "relevance": 3.0,
+      "completeness": 3.0,
+      "tone": 3.0,
+      "element_coverage": {
+        "acknowledges the login issue": false,
+        "takes or describes a concrete action": true,
+        "gives a fallback if the first step fails": false
+      },
+      "rationale": "",
       "human_note": "Restates something the customer already said they tried; no fallback, curt tone."
     }
   ]

@@ -47,10 +47,28 @@ def main():
         auto_scores.append(auto)
         human_scores.append(r["human_rating"])
         detail.append({
-            "id": r["id"], "human_rating_1_5": r["human_rating"],
-            "auto_overall_score_0_100": auto, "human_note": r.get("human_note", ""),
+            "id": r["id"],
+            "human_rating_1_5": r["human_rating"],
+            "auto_overall_score_0_100": auto,
+            "coverage": ev["scores"]["coverage"],
+            "relevance": ev["scores"]["relevance"],
+            "completeness": ev["scores"]["completeness"],
+            "tone": ev["scores"]["tone"],
+            "element_coverage": ev["element_coverage"],
+            "rationale": ev["rationale"],
+            "human_note": r.get("human_note", ""),
         })
-        print(f"{r['id']:5s} human={r['human_rating']}  auto={auto:5.1f}  ({r['human_note']})")
+        scores = ev["scores"]
+
+        print(
+            f"{r['id']:5s} "
+            f"human={r['human_rating']}  "
+            f"auto={auto:5.1f}  "
+            f"coverage={scores['coverage']:3.1f}  "
+            f"relevance={scores['relevance']:3.1f}  "
+            f"complete={scores['completeness']:3.1f}  "
+            f"tone={scores['tone']:3.1f}"
+        )
 
     pear, p_p = pearsonr(auto_scores, human_scores)
     spear, p_s = spearmanr(auto_scores, human_scores)
