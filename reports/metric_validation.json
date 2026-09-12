@@ -1,0 +1,79 @@
+{
+  "n": 12,
+  "pearson_r": NaN,
+  "spearman_rho": NaN,
+  "detail": [
+    {
+      "id": "g01",
+      "human_rating_1_5": 5,
+      "auto_overall_score_0_100": 36.0,
+      "human_note": "Excellent: cites order number, timeframe, and return instructions."
+    },
+    {
+      "id": "g02",
+      "human_rating_1_5": 1,
+      "auto_overall_score_0_100": 36.0,
+      "human_note": "Completely fails to address the refund request; pure filler."
+    },
+    {
+      "id": "g03",
+      "human_rating_1_5": 5,
+      "auto_overall_score_0_100": 36.0,
+      "human_note": "On point, specific, gives a fallback."
+    },
+    {
+      "id": "g04",
+      "human_rating_1_5": 2,
+      "auto_overall_score_0_100": 36.0,
+      "human_note": "Doesn't cite the order number, vague timeframe, no concrete commitment."
+    },
+    {
+      "id": "g05",
+      "human_rating_1_5": 5,
+      "auto_overall_score_0_100": 36.0,
+      "human_note": "Apologizes, cites order, gives real options, asks for confirmation."
+    },
+    {
+      "id": "g06",
+      "human_rating_1_5": 2,
+      "auto_overall_score_0_100": 36.0,
+      "human_note": "On-topic but dodges the actual ask (replacement/refund) and no order reference or apology; borderline unhelpful for a clearly dead unit."
+    },
+    {
+      "id": "g07",
+      "human_rating_1_5": 5,
+      "auto_overall_score_0_100": 36.0,
+      "human_note": "Covers all three required points clearly and warmly."
+    },
+    {
+      "id": "g08",
+      "human_rating_1_5": 1,
+      "auto_overall_score_0_100": 36.0,
+      "human_note": "Never actually confirms the cancellation was performed -- risks a real billing complaint later."
+    },
+    {
+      "id": "g09",
+      "human_rating_1_5": 5,
+      "auto_overall_score_0_100": 36.0,
+      "human_note": "Specific discount, quantity referenced, clear next step."
+    },
+    {
+      "id": "g10",
+      "human_rating_1_5": 1,
+      "auto_overall_score_0_100": 36.0,
+      "human_note": "Completely ignores the bulk-discount question."
+    },
+    {
+      "id": "g11",
+      "human_rating_1_5": 5,
+      "auto_overall_score_0_100": 36.0,
+      "human_note": "Concrete action plus fallback, empathetic."
+    },
+    {
+      "id": "g12",
+      "human_rating_1_5": 2,
+      "auto_overall_score_0_100": 36.0,
+      "human_note": "Restates something the customer already said they tried; no fallback, curt tone."
+    }
+  ]
+}

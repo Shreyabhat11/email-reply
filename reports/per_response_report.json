@@ -1,0 +1,384 @@
+[
+  {
+    "id": "em_0034",
+    "category": "cancel_subscription",
+    "incoming_email": "Hi, please cancel my Annual subscription. I don't want to be charged again. Maria...",
+    "required_elements": [
+      "confirms the subscription was canceled",
+      "confirms no future charges",
+      "mentions access until end of current period"
+    ],
+    "generated_reply": "Hi Maria,\n\nI've gone ahead and canceled your Annual subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\nTaylor",
+    "retrieved_examples": [
+      {
+        "id": "em_0014",
+        "similarity": 1.0
+      },
+      {
+        "id": "em_0174",
+        "similarity": 1.0
+      },
+      {
+        "id": "em_0074",
+        "similarity": 0.893
+      }
+    ],
+    "historical_reply": "Hi Maria,\n\nI've gone ahead and canceled your Annual subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\nRobin",
+    "evaluation": {
+      "scores": {
+        "coverage": 0.0,
+        "relevance": 1.5,
+        "tone": 3.5,
+        "completeness": 1.0,
+        "overall_score": 22.0
+      },
+      "element_coverage": {},
+      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.924
+    }
+  },
+  {
+    "id": "em_0008",
+    "category": "sales_inquiry",
+    "incoming_email": "Hi, I'm considering ordering 10 units of the NovaCharge Power Bank for my team. Do you offer a bulk discount? Diego",
+    "required_elements": [
+      "addresses bulk discount for 10 units",
+      "gives a concrete discount or next step",
+      "asks for details needed to finalize (quantity/address)"
+    ],
+    "generated_reply": "Hi Wei,\n\nGreat question! For orders of 5+ units of the NovaCharge Power Bank, we can offer a 15% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nJamie",
+    "retrieved_examples": [
+      {
+        "id": "em_0158",
+        "similarity": 0.884
+      },
+      {
+        "id": "em_0078",
+        "similarity": 0.861
+      },
+      {
+        "id": "em_0132",
+        "similarity": 0.418
+      }
+    ],
+    "historical_reply": "Hi Diego,\n\nGreat question! For orders of 10+ units of the NovaCharge Power Bank, we can offer a 10% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nJamie",
+    "evaluation": {
+      "scores": {
+        "coverage": 0.0,
+        "relevance": 1.2,
+        "tone": 3.5,
+        "completeness": 1.0,
+        "overall_score": 20.5
+      },
+      "element_coverage": {},
+      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.787
+    }
+  },
+  {
+    "id": "em_0138",
+    "category": "sales_inquiry",
+    "incoming_email": "Hi, I'm considering ordering 5 units of the BrightPath Desk Chair for my team. Do you offer a bulk discount? Jordan",
+    "required_elements": [
+      "addresses bulk discount for 5 units",
+      "gives a concrete discount or next step",
+      "asks for details needed to finalize (quantity/address)"
+    ],
+    "generated_reply": "Hi Wei,\n\nGreat question! For orders of 20+ units of the BrightPath Desk Chair, we can offer a 10% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nMorgan",
+    "retrieved_examples": [
+      {
+        "id": "em_0188",
+        "similarity": 0.902
+      },
+      {
+        "id": "em_0088",
+        "similarity": 0.339
+      },
+      {
+        "id": "em_0148",
+        "similarity": 0.277
+      }
+    ],
+    "historical_reply": "Hi Jordan,\n\nGreat question! For orders of 5+ units of the BrightPath Desk Chair, we can offer a 10% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nMorgan",
+    "evaluation": {
+      "scores": {
+        "coverage": 0.0,
+        "relevance": 1.2,
+        "tone": 3.5,
+        "completeness": 1.0,
+        "overall_score": 20.5
+      },
+      "element_coverage": {},
+      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.898
+    }
+  },
+  {
+    "id": "em_0201",
+    "category": "refund_request",
+    "incoming_email": "Hello, I'd like a refund for the PulseFit Smart Band from order #308993 because it arrived damaged. How do I proceed? - Ines",
+    "required_elements": [
+      "references order number #308993",
+      "confirms the refund is being processed",
+      "gives a refund timeframe",
+      "mentions return/shipping instructions"
+    ],
+    "generated_reply": "Hi Alex,\n\nSorry to hear that! I've started a refund for order #418493; you should see the amount back on your original payment method within 10 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nMorgan",
+    "retrieved_examples": [
+      {
+        "id": "em_0181",
+        "similarity": 0.694
+      },
+      {
+        "id": "em_0071",
+        "similarity": 0.433
+      },
+      {
+        "id": "em_0041",
+        "similarity": 0.431
+      }
+    ],
+    "historical_reply": "Hi Ines,\n\nSorry to hear that! I've started a refund for order #308993; you should see the amount back on your original payment method within 5 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nMorgan",
+    "evaluation": {
+      "scores": {
+        "coverage": 0.0,
+        "relevance": 1.0,
+        "tone": 3.5,
+        "completeness": 1.0,
+        "overall_score": 19.5
+      },
+      "element_coverage": {},
+      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.85
+    }
+  },
+  {
+    "id": "em_0108",
+    "category": "sales_inquiry",
+    "incoming_email": "Hi, I'm considering ordering 5 units of the Aurora Desk Lamp for my team. Do you offer a bulk discount? Ines",
+    "required_elements": [
+      "addresses bulk discount for 5 units",
+      "gives a concrete discount or next step",
+      "asks for details needed to finalize (quantity/address)"
+    ],
+    "generated_reply": "Hi Jordan,\n\nI'm really sorry about that experience with your Aurora Desk Lamp -- that's not the quality we aim for. I can send a free replacement right away, or process a full refund for order #490017, whichever you'd prefer. Just reply and let me know which you'd like.\n\nApologies again,\nTaylor",
+    "retrieved_examples": [
+      {
+        "id": "em_0212",
+        "similarity": 0.511
+      },
+      {
+        "id": "em_0022",
+        "similarity": 0.511
+      },
+      {
+        "id": "em_0162",
+        "similarity": 0.509
+      }
+    ],
+    "historical_reply": "Hi Ines,\n\nGreat question! For orders of 5+ units of the Aurora Desk Lamp, we can offer a 15% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nTaylor",
+    "evaluation": {
+      "scores": {
+        "coverage": 0.0,
+        "relevance": 1.2,
+        "tone": 3.5,
+        "completeness": 1.0,
+        "overall_score": 20.5
+      },
+      "element_coverage": {},
+      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.172
+    }
+  },
+  {
+    "id": "em_0044",
+    "category": "cancel_subscription",
+    "incoming_email": "Hi, please cancel my Monthly subscription. I don't want to be charged again. Sofia",
+    "required_elements": [
+      "confirms the subscription was canceled",
+      "confirms no future charges",
+      "mentions access until end of current period"
+    ],
+    "generated_reply": "Hi Wei,\n\nI've gone ahead and canceled your Monthly subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\nTaylor",
+    "retrieved_examples": [
+      {
+        "id": "em_0084",
+        "similarity": 0.911
+      },
+      {
+        "id": "em_0154",
+        "similarity": 0.907
+      },
+      {
+        "id": "em_0114",
+        "similarity": 0.907
+      }
+    ],
+    "historical_reply": "Hi Sofia,\n\nI've gone ahead and canceled your Monthly subscription -- you won't be billed again. You'll still have access until the end of your current billing period. If you change your mind, just reply to this email and I can reactivate it any time.\n\nBest,\nTaylor",
+    "evaluation": {
+      "scores": {
+        "coverage": 0.0,
+        "relevance": 1.3,
+        "tone": 3.5,
+        "completeness": 1.0,
+        "overall_score": 21.0
+      },
+      "element_coverage": {},
+      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.924
+    }
+  },
+  {
+    "id": "em_0151",
+    "category": "refund_request",
+    "incoming_email": "Hello, I'd like a refund for the IronGrip Yoga Mat from order #529694 because it I no longer need it. How do I proceed? - Liam",
+    "required_elements": [
+      "references order number #529694",
+      "confirms the refund is being processed",
+      "gives a refund timeframe",
+      "mentions return/shipping instructions"
+    ],
+    "generated_reply": "Hi Diego,\n\nSorry to hear that! I've started a refund for order #653913; you should see the amount back on your original payment method within 7 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nJamie",
+    "retrieved_examples": [
+      {
+        "id": "em_0111",
+        "similarity": 0.575
+      },
+      {
+        "id": "em_0131",
+        "similarity": 0.568
+      },
+      {
+        "id": "em_0211",
+        "similarity": 0.424
+      }
+    ],
+    "historical_reply": "Hi Liam,\n\nSorry to hear that! I've started a refund for order #529694; you should see the amount back on your original payment method within 7 business days. If it's not too much trouble, please drop the item at any courier point using the prepaid label I've just emailed you.\n\nThanks for your patience,\nJamie",
+    "evaluation": {
+      "scores": {
+        "coverage": 0.0,
+        "relevance": 1.0,
+        "tone": 3.5,
+        "completeness": 1.0,
+        "overall_score": 19.5
+      },
+      "element_coverage": {},
+      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.876
+    }
+  },
+  {
+    "id": "em_0000",
+    "category": "order_status",
+    "incoming_email": "Hi, I ordered the EverBrew Coffee Maker on 2026-02-27 (order #782554) and it still says 'processing'. Can you tell me when it will ship? Thanks, Emma",
+    "required_elements": [
+      "references order number #782554",
+      "gives a concrete shipping timeframe",
+      "offers a next step if the timeline is missed"
+    ],
+    "generated_reply": "Hi Lucas,\n\nThanks for reaching out! I checked order #518359 and it's on track to ship within 1 business day(s). You'll get a tracking email as soon as it leaves the warehouse. Let us know if you don't see it by then.\n\nBest,\nJamie",
+    "retrieved_examples": [
+      {
+        "id": "em_0020",
+        "similarity": 0.726
+      },
+      {
+        "id": "em_0072",
+        "similarity": 0.365
+      },
+      {
+        "id": "em_0012",
+        "similarity": 0.365
+      }
+    ],
+    "historical_reply": "Hi Emma,\n\nThanks for reaching out! I checked order #782554 and it's on track to ship within 3 business day(s). You'll get a tracking email as soon as it leaves the warehouse. Let us know if you don't see it by then.\n\nBest,\nJamie",
+    "evaluation": {
+      "scores": {
+        "coverage": 0.0,
+        "relevance": 1.1,
+        "tone": 3.5,
+        "completeness": 1.0,
+        "overall_score": 20.0
+      },
+      "element_coverage": {},
+      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.835
+    }
+  },
+  {
+    "id": "em_0055",
+    "category": "billing_dispute",
+    "incoming_email": "Hello, I see a charge of $49.0 from you that I don't recognize. Can you explain what this is for? Aisha",
+    "required_elements": [
+      "mentions the amount $49.0",
+      "explains or investigates the charge",
+      "offers next step if customer disagrees"
+    ],
+    "generated_reply": "Hi Aisha,\n\nThanks for flagging this. I looked into the $49.0 charge and it matches [order/renewal] on your account -- I've attached the invoice for reference. If this still doesn't look right to you, let me know and I'll open a dispute review right away.\n\nBest,\nCasey",
+    "retrieved_examples": [
+      {
+        "id": "em_0015",
+        "similarity": 1.0
+      },
+      {
+        "id": "em_0065",
+        "similarity": 0.85
+      },
+      {
+        "id": "em_0115",
+        "similarity": 0.847
+      }
+    ],
+    "historical_reply": "Hi Aisha,\n\nThanks for flagging this. I looked into the $49.0 charge and it matches [order/renewal] on your account -- I've attached the invoice for reference. If this still doesn't look right to you, let me know and I'll open a dispute review right away.\n\nBest,\nCasey",
+    "evaluation": {
+      "scores": {
+        "coverage": 0.0,
+        "relevance": 1.2,
+        "tone": 3.5,
+        "completeness": 1.0,
+        "overall_score": 20.5
+      },
+      "element_coverage": {},
+      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
+      "diagnostic_lexical_similarity_to_historical_reply": 1.0
+    }
+  },
+  {
+    "id": "em_0208",
+    "category": "sales_inquiry",
+    "incoming_email": "Hi, I'm considering ordering 20 units of the TrailBlaze Backpack 40L for my team. Do you offer a bulk discount? Ines",
+    "required_elements": [
+      "addresses bulk discount for 20 units",
+      "gives a concrete discount or next step",
+      "asks for details needed to finalize (quantity/address)"
+    ],
+    "generated_reply": "Hi Jordan,\n\nGreat question! For orders of 5+ units of the TrailBlaze Backpack 40L, we can offer a 10% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nCasey",
+    "retrieved_examples": [
+      {
+        "id": "em_0088",
+        "similarity": 0.866
+      },
+      {
+        "id": "em_0058",
+        "similarity": 0.84
+      },
+      {
+        "id": "em_0102",
+        "similarity": 0.398
+      }
+    ],
+    "historical_reply": "Hi Ines,\n\nGreat question! For orders of 20+ units of the TrailBlaze Backpack 40L, we can offer a 20% bulk discount. I can send over a quote with that pricing applied -- just confirm the exact quantity and shipping address and I'll get it right over.\n\nBest,\nJamie",
+    "evaluation": {
+      "scores": {
+        "coverage": 0.0,
+        "relevance": 1.2,
+        "tone": 3.5,
+        "completeness": 1.0,
+        "overall_score": 20.5
+      },
+      "element_coverage": {},
+      "rationale": "Heuristic offline mock judge (keyword overlap only); run with ANTHROPIC_API_KEY set for a real semantic judgement.",
+      "diagnostic_lexical_similarity_to_historical_reply": 0.733
+    }
+  }
+]
